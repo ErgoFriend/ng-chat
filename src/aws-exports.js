@@ -2,20 +2,20 @@
 
 const awsmobile = {
     "aws_project_region": "ap-northeast-1",
-    "aws_cognito_identity_pool_id": "ap-northeast-1:da0c516c-1467-4922-9854-1c04cfc5c5b8",
+    "aws_content_delivery_bucket": "ng-chat-20191110141305-hostingbucket-tes",
+    "aws_content_delivery_bucket_region": "ap-northeast-1",
+    "aws_content_delivery_url": "https://d2ihqeud4sitj7.cloudfront.net",
+    "aws_cognito_identity_pool_id": "ap-northeast-1:8c8e518d-bdb1-4f1d-8caa-fae260821600",
     "aws_cognito_region": "ap-northeast-1",
-    "aws_user_pools_id": "ap-northeast-1_npMLaTHr4",
-    "aws_user_pools_web_client_id": "5901rb8f97d27pcqhkp1eob540",
+    "aws_user_pools_id": "ap-northeast-1_B0LbRQXLz",
+    "aws_user_pools_web_client_id": "4d54gtb0b9ovbqu6qdlbqrk8pn",
     "oauth": {},
-    "aws_appsync_graphqlEndpoint": "https://elice4go7fd2tc6cw2ynyivxei.appsync-api.ap-northeast-1.amazonaws.com/graphql",
+    "aws_appsync_graphqlEndpoint": "https://6u6a24bdebb4fl6kehogztkzmy.appsync-api.ap-northeast-1.amazonaws.com/graphql",
     "aws_appsync_region": "ap-northeast-1",
     "aws_appsync_authenticationType": "API_KEY",
-    "aws_appsync_apiKey": "da2-2gyv5pknsnarzcpyu3dzooaody",
-    "aws_user_files_s3_bucket": "ng-chat2b22d66ae6a74f3aae487eb64ec680b0-test",
-    "aws_user_files_s3_bucket_region": "ap-northeast-1",
-    "aws_content_delivery_bucket": "ng-chat-20191103202730-hostingbucket-test",
-    "aws_content_delivery_bucket_region": "ap-northeast-1",
-    "aws_content_delivery_url": "https://dsgd5mlb4bgbq.cloudfront.net"
+    "aws_appsync_apiKey": "da2-ro3owspsk5hhnmakwekyxnoyvy",
+    "aws_user_files_s3_bucket": "ng-chatc60d9846ad8843d68fb6949629fe1735-tes",
+    "aws_user_files_s3_bucket_region": "ap-northeast-1"
 };
 
 

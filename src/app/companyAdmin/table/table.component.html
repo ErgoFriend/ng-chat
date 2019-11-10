@@ -27,9 +27,9 @@
               <th>
                 Title
               </th>
-              <th>
+              <!-- <th>
                 SubTitle
-              </th>
+              </th>-->
               <th>
                 Area
               </th>
@@ -48,17 +48,13 @@
                 <td>
                   {{ article.title }}
                 </td>
-                <td></td>
                 <td>
                   {{ article.area.content }}
                 </td>
                 <td>
                   {{ unixTime2ymd(article.createdAt) }}
                 </td>
-                <td
-                  style="text-align: center;"
-                  *ngIf="article.isOpen === 'open'"
-                >
+                <td style="text-align: left;" *ngIf="article.isOpen === 'open'">
                   <button
                     type="submit"
                     class="btn btn-primary btn-round"
@@ -67,10 +63,7 @@
                     公開中
                   </button>
                 </td>
-                <td
-                  style="text-align: center;"
-                  *ngIf="article.isOpen != 'open'"
-                >
+                <td style="text-align: left;" *ngIf="article.isOpen != 'open'">
                   <button
                     type="submit"
                     class="btn btn-danger btn-round"

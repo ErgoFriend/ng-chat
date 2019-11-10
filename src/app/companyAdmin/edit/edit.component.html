@@ -16,14 +16,30 @@
         [(ngModel)]="title"
       />
     </div>
-    <div style="padding-bottom:10px; ">
-      <label>SubTitle</label>
-      <input type="text" class="form-control" placeholder="SubTitle" value="" />
+    <div style="padding-bottom:10px;">
+      <label>Area</label>
+      <div>
+        <select
+          id="AreaList"
+          class="form-control"
+          style="width: 50%;"
+          [(ngModel)]="Area"
+        >
+          <option
+            *ngFor="let Area of AreaList"
+            [value]="Area.id"
+            [selected]="Area.id == Area.id"
+          >
+            {{ Area.content }}</option
+          >
+        </select>
+      </div>
     </div>
-    <div style="padding-bottom:10px; ">
+    <!--<div style="padding-bottom:10px; ">
       <label>Area</label>
       <input type="text" class="form-control" placeholder="Area" value="" />
-    </div>
+    </div>-->
+    <!--
     <div style="padding-bottom:10px; ">
       <label>Term</label>
       <div class="row">
@@ -40,6 +56,7 @@
         </div>
       </div>
     </div>
+    -->
     <div class="row">
       <div class="col-md-6">
         <label>Top Img</label>

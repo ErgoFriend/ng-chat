@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "ngchat5bcb8f68_identitypool_5bcb8f68",
+    "identityPoolName": "ngchat987a26da_identitypool_987a26da",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "ngchat5bcb8f68",
-    "userPoolName": "ngchat5bcb8f68_userpool_5bcb8f68",
+    "resourceNameTruncated": "ngchat987a26da",
+    "userPoolName": "ngchat987a26da_userpool_987a26da",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "ngchat5bcb8f68_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "ngchat987a26da_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "ngchat5bcb8f68",
+    "resourceName": "ngchat987a26da",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,5 +45,10 @@
         ]
     },
     "useDefault": "default",
+    "triggers": "{}",
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
     "dependsOn": []
 }

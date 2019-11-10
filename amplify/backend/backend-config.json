@@ -1,6 +1,12 @@
 {
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation"
+		}
+	},
 	"auth": {
-		"ngchat5bcb8f68": {
+		"ngchat987a26da": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []
@@ -14,35 +20,29 @@
 				"authConfig": {
 					"additionalAuthenticationProviders": [
 						{
-							"authenticationType": "API_KEY",
-							"apiKeyConfig": {
-								"description": "techforward",
-								"apiKeyExpirationDays": "365"
+							"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+							"userPoolConfig": {
+								"userPoolId": "authngchat987a26da"
 							}
 						},
 						{
-							"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-							"userPoolConfig": {
-								"userPoolId": "authngchat5bcb8f68"
-							}
+							"authenticationType": "AWS_IAM"
 						}
 					],
 					"defaultAuthentication": {
-						"authenticationType": "AWS_IAM"
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "techforward",
+							"apiKeyExpirationDays": "365"
+						}
 					}
 				}
 			}
 		}
 	},
 	"storage": {
-		"s3c70369cc": {
+		"s39e87e7c8": {
 			"service": "S3",
-			"providerPlugin": "awscloudformation"
-		}
-	},
-	"hosting": {
-		"S3AndCloudFront": {
-			"service": "S3AndCloudFront",
 			"providerPlugin": "awscloudformation"
 		}
 	}

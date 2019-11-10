@@ -1,18 +1,18 @@
 {
-    "test": {
+    "tes": {
         "awscloudformation": {
-            "AuthRoleName": "ng-chat-test-20191103202533-authRole",
-            "UnauthRoleArn": "arn:aws:iam::202703265993:role/ng-chat-test-20191103202533-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::202703265993:role/ng-chat-test-20191103202533-authRole",
+            "AuthRoleName": "ng-chat-tes-20191110141212-authRole",
+            "UnauthRoleArn": "arn:aws:iam::202703265993:role/ng-chat-tes-20191110141212-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::202703265993:role/ng-chat-tes-20191110141212-authRole",
             "Region": "ap-northeast-1",
-            "DeploymentBucketName": "ng-chat-test-20191103202533-deployment",
-            "UnauthRoleName": "ng-chat-test-20191103202533-unauthRole",
-            "StackName": "ng-chat-test-20191103202533",
-            "StackId": "arn:aws:cloudformation:ap-northeast-1:202703265993:stack/ng-chat-test-20191103202533/a65f2460-fe2c-11e9-b026-0ad7850b06a8"
+            "DeploymentBucketName": "ng-chat-tes-20191110141212-deployment",
+            "UnauthRoleName": "ng-chat-tes-20191110141212-unauthRole",
+            "StackName": "ng-chat-tes-20191110141212",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:202703265993:stack/ng-chat-tes-20191110141212/a7605a90-0378-11ea-a6d9-0e7d1a719a58"
         },
         "categories": {
             "auth": {
-                "ngchat5bcb8f68": {}
+                "ngchat987a26da": {}
             }
         }
     }
