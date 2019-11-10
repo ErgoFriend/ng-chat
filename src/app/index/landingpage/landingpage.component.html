@@ -24,11 +24,7 @@
   <div class="container">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-6 mt-lg-5 text-center">
-        <<<<<<< HEAD
         <h1 style="height:unset;">Buy and sell real estate properties!!!!!</h1>
-        =======
-        <h1 style="height:unset;">Buy and sell real estate properties</h1>
-        >>>>>>> c5cd9b89c94fd8da89d3da0033a79b17f1f986bf
         <p class="mb-5" style="height:unset;">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
           assumenda ea quo cupiditate facere deleniti fuga officia.
@@ -86,122 +82,305 @@
     </div>
   </div>
 </div>
-<div class="read-title" style="margin:50px auto;text-align:center; ">
-  <<<<<<< HEAD
-  <h2 class="section-title mb-3">求人情報</h2>
-  =======
-  <h4 style="color:orange;">求人情報</h4>
-  >>>>>>> c5cd9b89c94fd8da89d3da0033a79b17f1f986bf
-</div>
 
-<div class="size_width">
-  <div class="columns features">
-    <div class="column is-4">
-      <div class="card is-shady">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="../../../assets/img/top/1.jpg"
-              alt="Placeholder image"
-              class="modal-button"
-              data-target="modal-image2"
-            />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <h4>テストです</h4>
-            <p style="height: unset;">
-              Purus semper eget duis at tellus at urna condimentum mattis. Non
-              blandit massa enim nec. Integer enim neque volutpat ac tincidunt
-              vitae semper quis. Accumsan tortor posuere ac ut consequat semper
-              viverra nam.
-            </p>
-            <span
-              class="button is-link modal-button"
-              data-target="modal-image2"
-              style="background-color:#ee771c;font-size: 14px;"
-              >詳細を見る</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column is-4">
-      <div class="card is-shady">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="../../../assets/img/top/2.jpg"
-              alt="Placeholder image"
-              class="modal-button"
-              data-target="modal-image2"
-            />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <h4>テストです</h4>
-            <p style="height: unset;">
-              Purus semper eget duis at tellus at urna condimentum mattis. Non
-              blandit massa enim nec. Integer enim neque volutpat ac tincidunt
-              vitae semper quis. Accumsan tortor posuere ac ut consequat semper
-              viverra nam.
-            </p>
-            <span
-              class="button is-link modal-button"
-              data-target="modal-image2"
-              style="background-color:#ee771c;font-size: 14px;"
-              >詳細を見る</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column is-4">
-      <div class="card is-shady">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img
-              src="../../../assets/img/top/3.jpg"
-              alt="Placeholder image"
-              class="modal-button"
-              data-target="modal-image2"
-            />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <h4>テストです</h4>
-            <p style="height: unset;">
-              Purus semper eget duis at tellus at urna condimentum mattis.Non
-              blandit massa enim nec. Integer enim neque volutpat actincidunt
-              vitae semper quis. Accumsan tortor posuere ac utconsequat semper
-              viverra nam.
-            </p>
-            <span
-              class="button is-link modal-button"
-              data-target="modal-image2"
-              style="background-color:#ee771c;font-size: 14px;"
-              >詳細を見る</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <a href="listings.html" class="btn btn-primary btn-block">詳細はこちら</a>
-    </div>
-  </div>
-</div>
-
-<section class="site-section bg-light" id="services-section">
+<div
+  class="py-5  site-section how-it-works"
+  id="howitworks-section"
+  style="width:100%;"
+>
   <div class="container">
     <div
-      class="row mb-5"
-      style="opacity:unset !important ; margin-bottom:0px !important; "
+      class="row mb-5 justify-content-center"
+      style="margin-bottom: unset!important;"
+    >
+      <div class="col-md-7 text-center">
+        <h2 class="section-title mb-3">ユーザ登録はこちら</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 ">
+        <div
+          style="width: 80%;width: 80%;margin: 0 auto; padding-top: 20px;padding-bottom: 20px;"
+        >
+          <h5 style="font-family: unset;">一般ユーザー登録</h5>
+          <div class="field">
+            <label class="label">ユーザー名</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input is-success"
+                type="text"
+                [(ngModel)]="usernameApplicant"
+              />
+              <span class="icon is-small is-left">
+                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+              </span>
+            </div>
+            <!--<p class="help is-success">This username is available</p>-->
+          </div>
+
+          <div class="field">
+            <label class="label">メールアドレス</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input is-success"
+                type="email"
+                [(ngModel)]="emailApplicant"
+              />
+              <span class="icon is-small is-left">
+                <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+              </span>
+            </div>
+            <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
+          </div>
+
+          <div class="field">
+            <label class="label">パスワード</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input is-success"
+                type="password"
+                [(ngModel)]="passwordApplicant"
+              />
+              <span class="icon is-small is-left">
+                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-success">ok</p> -->
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" [(ngModel)]="checkApplicant" />
+                <a href="#">利用規約</a>に同意します。
+              </label>
+            </div>
+            <p class="help is-danger">{{ messageApplicant }}</p>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" (click)="createApplicant()">
+                アカウントを作成
+              </button>
+            </div>
+            <div class="control">
+              <button class="button is-danger is-inverted">やめる</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 ">
+        <div
+          style="width: 80%;margin: 0 auto;padding-top: 20px;padding-bottom: 20px;"
+        >
+          <h5 style="font-family: unset;">企業ユーザー登録</h5>
+
+          <div class="field">
+            <label class="label">ユーザー名</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input is-success"
+                type="text"
+                [(ngModel)]="usernameComapny"
+              />
+              <span class="icon is-small is-left">
+                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+              </span>
+            </div>
+            <!--<p class="help is-success">This username is available</p>-->
+          </div>
+
+          <div class="field">
+            <label class="label">メールアドレス</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input is-success"
+                type="email"
+                [(ngModel)]="emailComapny"
+              />
+              <span class="icon is-small is-left">
+                <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+              </span>
+            </div>
+            <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
+          </div>
+
+          <div class="field">
+            <label class="label">パスワード</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input is-success"
+                type="password"
+                [(ngModel)]="passwordComapny"
+              />
+              <span class="icon is-small is-left">
+                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-success">ok</p> -->
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" [(ngModel)]="checkCompany" />
+                <a href="#">利用規約</a>に同意します。
+              </label>
+            </div>
+            <p class="help is-danger">{{ messageComapny }}</p>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" (click)="createComapny()">
+                アカウントを作成
+              </button>
+            </div>
+            <div class="control">
+              <button class="button is-danger is-inverted">やめる</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-5 bg-light site-section how-it-works" style="width:100%;">
+  <div class="read-title" style="margin:50px auto;text-align:center; ">
+    <h2 class="section-title mb-3">求人情報</h2>
+  </div>
+
+  <div class="size_width">
+    <div class="columns features">
+      <div class="column is-4">
+        <div class="card is-shady">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="../../../assets/img/top/1.jpg"
+                alt="Placeholder image"
+                class="modal-button"
+                data-target="modal-image2"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h4>テストです</h4>
+              <p style="height: unset;">
+                Purus semper eget duis at tellus at urna condimentum mattis. Non
+                blandit massa enim nec. Integer enim neque volutpat ac tincidunt
+                vitae semper quis. Accumsan tortor posuere ac ut consequat
+                semper viverra nam.
+              </p>
+              <span
+                class="button is-link modal-button"
+                data-target="modal-image2"
+                style="background-color:#ee771c;font-size: 14px;"
+                >詳細を見る</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="card is-shady">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="../../../assets/img/top/2.jpg"
+                alt="Placeholder image"
+                class="modal-button"
+                data-target="modal-image2"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h4>テストです</h4>
+              <p style="height: unset;">
+                Purus semper eget duis at tellus at urna condimentum mattis. Non
+                blandit massa enim nec. Integer enim neque volutpat ac tincidunt
+                vitae semper quis. Accumsan tortor posuere ac ut consequat
+                semper viverra nam.
+              </p>
+              <span
+                class="button is-link modal-button"
+                data-target="modal-image2"
+                style="background-color:#ee771c;font-size: 14px;"
+                >詳細を見る</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="card is-shady">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="../../../assets/img/top/3.jpg"
+                alt="Placeholder image"
+                class="modal-button"
+                data-target="modal-image2"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h4>テストです</h4>
+              <p style="height: unset;">
+                Purus semper eget duis at tellus at urna condimentum mattis.Non
+                blandit massa enim nec. Integer enim neque volutpat actincidunt
+                vitae semper quis. Accumsan tortor posuere ac utconsequat semper
+                viverra nam.
+              </p>
+              <span
+                class="button is-link modal-button"
+                data-target="modal-image2"
+                style="background-color:#ee771c;font-size: 14px;"
+                >詳細を見る</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <a href="listings.html" class="btn btn-primary btn-block"
+          >詳細はこちら</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<section class="site-section " id="services-section">
+  <div class="container">
+    <div
+      class="row mb-5 justify-content-center"
+      style="margin-bottom: unset!important;"
     >
       <div class="col-12 text-center" style="margin-bottom:0px !important;">
         <h2 class="section-title mb-3" style="margin-top:0px !important;">
@@ -213,6 +392,7 @@
       <div
         class="col-md-6 col-lg-4 mb-4 mb-lg-4"
         data-aos="fade-up"
+        data-aos-delay="100"
         style="opacity:unset !important;margin-top:0px;"
       >
         <div class="unit-4 d-flex">
@@ -332,9 +512,9 @@
       </div>
     </div>
   </div>
-</section>
+</section>-->
 
-<section class="site-section bg-image" id="contact-section">
+<section class="site-section  bg-image" id="contact-section">
   <div class="container">
     <div class="row mb-5">
       <div class="col-12 text-center">

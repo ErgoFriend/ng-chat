@@ -40,6 +40,7 @@ export class EditComponent implements OnInit {
   fileUrl: Object | String;
   AreaList: Array<any>;
   Area: string;
+  AreaPara: string;
 
   config: AngularEditorConfig = {
     editable: true,
@@ -96,8 +97,7 @@ export class EditComponent implements OnInit {
               this.AreaList = data.items;
               console.log(this.AreaList);
             });
-            this.Area = data.area.content;
-            console.log(this.Area);
+            this.AreaPara = data.area.content;
           })
           .catch(err => console.log("1234"));
       });
@@ -109,7 +109,7 @@ export class EditComponent implements OnInit {
         console.log(data);
         this.AreaList = data.items;
         console.log(this.AreaList);
-        this.Area = data.items[0].content;
+        this.AreaPara = data.items[0].content;
       });
     }
   }
@@ -129,8 +129,8 @@ export class EditComponent implements OnInit {
 
     for (let i = 0; i < this.AreaList.length; i++) {
       if (
-        this.AreaList[i].content == this.Area ||
-        this.AreaList[i].id == this.Area
+        this.AreaList[i].content == this.AreaPara ||
+        this.AreaList[i].id == this.AreaPara
       ) {
         var areaId = this.AreaList[i].id;
       }

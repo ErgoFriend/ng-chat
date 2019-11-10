@@ -4,7 +4,8 @@ import { AngularEditorConfig } from "@kolkov/angular-editor";
 import {
   UpdateCompanyInput,
   CreateCompanyWorkTypeInput,
-  CreateCompanyStyleTypeInput
+  CreateCompanyStyleTypeInput,
+  ModelSortDirection
 } from "../../API.service";
 import API, { graphqlOperation } from "@aws-amplify/api";
 
@@ -57,18 +58,7 @@ export class CompanyComponent implements OnInit {
     this.filename = this.user.id + ".png";
     this.fileNameBackground = "company/background/" + this.filename;
     this.fileNameProfile = "company/profile/" + this.filename;
-    Storage.get(this.fileNameBackground, { level: "public" })
-      .then(result => {
-        console.log(result);
-        this.fileUrlBackground = result;
-      })
-      .catch(err => console.log(err));
-    Storage.get(this.fileNameProfile, { level: "public" })
-      .then(result => {
-        console.log(result);
-        this.fileUrlProfile = result;
-      })
-      .catch(err => console.log(err));
+
     //idをキーに企業情報を取得
     //const company: ModelCompanyFilterInput = {};
     // await this.api.ListCompanys().then(data => {
@@ -83,6 +73,19 @@ export class CompanyComponent implements OnInit {
       this.companyEmail = companyData.email;
       this.workTypeList = companyData.workTypes.items;
       this.styleTypeList = companyData.styleTypes.items;
+
+      Storage.get(this.fileNameBackground, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlBackground = result;
+        })
+        .catch(err => console.log(err));
+      Storage.get(this.fileNameProfile, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlProfile = result;
+        })
+        .catch(err => console.log(err));
     } else {
       console.log(cognitUser.attributes.email);
       const now = Math.floor(new Date().getTime());
@@ -95,6 +98,29 @@ export class CompanyComponent implements OnInit {
         createdAt: now,
         updatedAt: now
       });
+
+      const response = await fetch("/assets/img/top/2.jpg");
+      console.log(response);
+      const blob = await response.blob();
+      Storage.put("company/background/" + loginedUser.id + ".png", blob, {
+        contentType: "image/png"
+      });
+      Storage.put("company/profile/" + loginedUser.id + ".png", blob, {
+        contentType: "image/png"
+      });
+
+      Storage.get(this.fileNameBackground, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlBackground = result;
+        })
+        .catch(err => console.log(err));
+      Storage.get(this.fileNameProfile, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlProfile = result;
+        })
+        .catch(err => console.log(err));
     }
 
     //workTypeのロジック
@@ -216,13 +242,15 @@ export class CompanyComponent implements OnInit {
     //flagはDBに存在するか
     //あればDelete
     const now = Math.floor(new Date().getTime());
-    var lastId;
+    var lastId = "0";
     var relationId;
     this.api
-      .ListCompanyWorkTypes(null, null, null, null, null)
+      .ListCompanyWorkTypes(null, null, null, null, ModelSortDirection.ASC)
       .then(data => {
         for (let ii = 0; ii < data.items.length; ii++) {
-          lastId = data.items[ii].id;
+          if (parseInt(lastId, 10) < parseInt(data.items[ii].id, 10)) {
+            lastId = data.items[ii].id;
+          }
           if (
             data.items[ii].company.id == this.user.id &&
             data.items[ii].workType.id == workTypeId
@@ -253,13 +281,15 @@ export class CompanyComponent implements OnInit {
   }
   async styleTypeToggle(flag, styleTypeId) {
     const now = Math.floor(new Date().getTime());
-    var lastId;
+    var lastId = "0";
     var relationId;
     this.api
-      .ListCompanyStyleTypes(null, null, null, null, null)
+      .ListCompanyStyleTypes(null, null, null, null, ModelSortDirection.ASC)
       .then(data => {
         for (let ii = 0; ii < data.items.length; ii++) {
-          lastId = data.items[ii].id;
+          if (parseInt(lastId, 10) < parseInt(data.items[ii].id, 10)) {
+            lastId = data.items[ii].id;
+          }
           if (
             data.items[ii].company.id == this.user.id &&
             data.items[ii].styleType.id == styleTypeId

@@ -35,6 +35,7 @@ export class ConfirmEmailComponent implements OnInit {
         const cognitUser = Auth.currentAuthenticatedUser();
         console.log(cognitUser);
         console.log(data);
+        console.log(this.role);
         if (this.role == "company") {
           this.router.navigate(["/auth/company"]);
         } else {

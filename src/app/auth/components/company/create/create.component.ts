@@ -27,7 +27,7 @@ export class CreateCompanyUserComponent implements OnInit {
     this.message = "";
     if (this.check == false) {
       this.message = "利用規約に同意してください。";
-      this.router.navigate(["/auth/create"]);
+      this.router.navigate(["/auth/company/create"]);
     } else {
       Auth.signUp({
         username: this.username,
@@ -40,9 +40,11 @@ export class CreateCompanyUserComponent implements OnInit {
         validationData: [] //optional
       })
         .then(data => {
-          this.router.navigate(["/auth/confirm_email/compnay"]);
+          console.log("aaaaaaa");
+          this.router.navigate(["/auth/confirm_email/company"]);
         })
         .catch(err => {
+          console.log("aaaaaaa");
           console.log(err);
           if (err.code == "UsernameExistsException") {
             if (this.message !== undefined) {
@@ -52,9 +54,9 @@ export class CreateCompanyUserComponent implements OnInit {
             }
           } else {
             if (this.message !== undefined) {
-              this.message = this.message + "そのユーザ名は既に使われいます。";
+              this.message = this.message + "ユーザ名に不備があります。";
             } else {
-              this.message = "そのユーザ名は既に使われいます。";
+              this.message = "ユーザ名に不備があります。";
             }
           }
         });

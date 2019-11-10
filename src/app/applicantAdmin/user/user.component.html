@@ -8,16 +8,28 @@
     padding: 15px;
   }
 </style>
+
 <div class="row">
   <div class="col-md-4">
     <div class="card card-user">
       <div class="image">
-        <img [src]="fileUrlBackground" alt="..." />
+        <img
+          id="fileUrlBackground"
+          [src]="fileUrlBackground"
+          (error)="(onImageLoadingError)"
+          alt="..."
+        />
       </div>
       <div class="card-body">
         <div class="author">
           <a href="#">
-            <img class="avatar border-gray" [src]="fileUrlProfile" alt="..." />
+            <img
+              id="fileUrlProfile"
+              class="avatar border-gray"
+              [src]="fileUrlProfile"
+              (error)="(onImageLoadingError)"
+              alt="..."
+            />
             <h5 class="title">{{ applicantName }}</h5>
           </a>
           <p class="description">@{{ applicantId }}</p>
@@ -101,7 +113,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-4 pr-1">
               <div class="form-group">
                 <label>City</label>
@@ -113,7 +125,36 @@
                 />
               </div>
             </div>
-          </div>
+          </div>-->
+          <!--
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              {{ AreaPara }}
+              <div class="form-group">
+                <label>Area</label>
+                <div>
+                  <select
+                    id="AreaList"
+                    class="form-control"
+                    style="width: 50%;"
+                    [(ngModel)]="AreaPara.id"
+                    name="AreaPara"
+                  >
+                    <option></option>
+                    <option
+                      *ngFor="let Area of AreaList"
+                      [value]="Area"
+                      [selected]="
+                        AreaPara === Area.content || AreaPara === Area.id
+                      "
+                    >
+                      {{ Area.content }}</option
+                    >
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>-->
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
@@ -138,7 +179,7 @@
                       class="btn  btn-primary btn-round"
                       style="padding: 15px;"
                       *ngIf="skill.flag == true"
-                      (click)="skillToggle(skill.id)"
+                      (click)="skillToggle(skill.flag, skill.id)"
                     >
                       {{ skill.content }}
                     </button>
@@ -147,7 +188,7 @@
                       class="btn  btn-round"
                       style="background-color:grey;padding: 15px;"
                       *ngIf="skill.flag == false"
-                      (click)="skillToggle(skill.id)"
+                      (click)="skillToggle(skill.flag, skill.id)"
                     >
                       {{ skill.content }}
                     </button>
@@ -167,7 +208,7 @@
                       type="submit"
                       class="btn btn_Orange btn-round"
                       *ngIf="charactor.flag == true"
-                      (click)="characterToggle(charactor.id)"
+                      (click)="characterToggle(charactor.flag, charactor.id)"
                     >
                       {{ charactor.content }}
                     </button>
@@ -176,7 +217,7 @@
                       class="btn  btn-round"
                       style="background-color: grey;padding: 15px;"
                       *ngIf="charactor.flag == false"
-                      (click)="characterToggle(charactor.id)"
+                      (click)="characterToggle(charactor.flag, charactor.id)"
                     >
                       {{ charactor.content }}
                     </button>

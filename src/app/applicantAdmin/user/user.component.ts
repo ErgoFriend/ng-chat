@@ -4,7 +4,11 @@ import { AngularEditorConfig } from "@kolkov/angular-editor";
 import {
   CreateArticleInput,
   ArticleStatus,
-  DeleteApplicantCharacterInput
+  DeleteApplicantCharacterInput,
+  CreateApplicantCharacterInput,
+  CreateApplicantSkillInput,
+  ModelSortDirection,
+  UpdateApplicantInput
 } from "../../API.service";
 import API, { graphqlOperation } from "@aws-amplify/api";
 
@@ -52,6 +56,9 @@ export class UserComponent implements OnInit {
   applicantAbout = "";
   applicantEmail: any;
 
+  AreaList: Array<any>;
+  AreaPara: any;
+
   constructor(private api: MyAPIService) {}
 
   async ngOnInit() {
@@ -66,18 +73,6 @@ export class UserComponent implements OnInit {
     this.filename = this.user.id + ".png";
     this.fileNameBackground = "student/background/" + this.filename;
     this.fileNameProfile = "student/profile/" + this.filename;
-    Storage.get(this.fileNameBackground)
-      .then(result => {
-        console.log(result);
-        this.fileUrlBackground = result;
-      })
-      .catch(err => console.log("aaaaaaaaaaaaa" + err));
-    Storage.get(this.fileNameProfile)
-      .then(result => {
-        console.log(result);
-        this.fileUrlProfile = result;
-      })
-      .catch(err => console.log("bbbbbbbbbb" + err));
 
     let applicantData = await this.api.MyGetApplicant(loginedUser.id);
     console.log("applicantData:", applicantData);
@@ -93,9 +88,33 @@ export class UserComponent implements OnInit {
       this.skillList = applicantData.skills.items;
       console.log(this.charactorList);
       console.log(this.skillList);
+      Storage.get(this.fileNameBackground, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlBackground = result;
+        })
+        .catch(err => console.log("aaaaaaaaaaaaa" + err));
+      Storage.get(this.fileNameProfile, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlProfile = result;
+        })
+        .catch(err => console.log("bbbbbbbbbb" + err));
+      if (applicantData.area != null) {
+        this.AreaPara = applicantData.area.id;
+      }
     } else {
       const now = Math.floor(new Date().getTime());
       console.log(cognitUser.attributes.email);
+      const response = await fetch("/assets/img/top/2.jpg");
+      console.log(response);
+      const blob = await response.blob();
+      Storage.put("student/background/" + this.userId + ".png", blob, {
+        contentType: "image/png"
+      });
+      Storage.put("student/profile/" + this.userId + ".png", blob, {
+        contentType: "image/png"
+      });
       applicantData = await this.api.CreateApplicant({
         id: loginedUser.id,
         applicantUserId: loginedUser.id,
@@ -118,6 +137,18 @@ export class UserComponent implements OnInit {
       this.skillList = applicantData.skills.items;
       console.log(this.charactorList);
       console.log(this.skillList);
+      Storage.get(this.fileNameBackground, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlBackground = result;
+        })
+        .catch(err => console.log("aaaaaaaaaaaaa" + err));
+      Storage.get(this.fileNameProfile, { level: "public" })
+        .then(result => {
+          console.log(result);
+          this.fileUrlProfile = result;
+        })
+        .catch(err => console.log("bbbbbbbbbb" + err));
     }
 
     //性格のロジック
@@ -178,6 +209,15 @@ export class UserComponent implements OnInit {
       }
       this.skillListForView = tmpSkill;
     });
+
+    this.api.ListAreas().then(data => {
+      this.AreaList = data.items;
+      if (this.AreaPara == null || this.AreaPara == "") {
+        this.AreaPara = data.items[0].content;
+      }
+      console.log(this.AreaList);
+      console.log(this.AreaPara);
+    });
   }
 
   onFileChangedBackground(event) {
@@ -199,7 +239,30 @@ export class UserComponent implements OnInit {
     const now = Math.floor(new Date().getTime());
     this.uploadBackgroundImg(this.filename);
     this.uploadProfileImg(this.filename);
-    setTimeout("location.reload()", 1000);
+
+    for (let i = 0; i < this.AreaList.length; i++) {
+      if (
+        this.AreaList[i].content == this.AreaPara ||
+        this.AreaList[i].id == this.AreaPara
+      ) {
+        var areaId = this.AreaList[i].id;
+      }
+    }
+
+    const applicant: UpdateApplicantInput = {
+      id: this.userId,
+      applicantUserId: this.userId,
+      name: this.userId,
+      email: this.applicantEmail,
+      lastName: this.lastName,
+      firstName: this.firstName,
+      about: this.applicantAbout,
+      updatedAt: now,
+      applicantAreaId: areaId
+    };
+
+    this.api.UpdateApplicant(applicant).then(data => {});
+    // setTimeout("location.reload()", 1000);
   }
   async uploadBackgroundImg(id) {
     const file = this.selectedFileBackground;
@@ -219,26 +282,90 @@ export class UserComponent implements OnInit {
       .then(result => console.log(result)) // {key: "test.txt"}
       .catch(err => console.log(err));
   }
-  async characterToggle(id) {
-    console.log(id);
+  async characterToggle(flag, characterId) {
+    console.log(characterId);
 
     //DBに存在するかの確認
 
-    //あればDelete
-    //const input: DeleteApplicantCharacterInput = { id: "test" };
-    //await this.api.DeleteApplicantCharacter(input).then(data => {});
-
-    //なければCreate
+    const now = Math.floor(new Date().getTime());
+    var lastId = "0";
+    var relationId;
+    this.api
+      .ListApplicantCharacters(null, null, null, null, ModelSortDirection.DESC)
+      .then(data => {
+        for (let ii = 0; ii < data.items.length; ii++) {
+          if (parseInt(lastId, 10) < parseInt(data.items[ii].id, 10)) {
+            lastId = data.items[ii].id;
+          }
+          if (
+            data.items[ii].applicant.id == this.user.id &&
+            data.items[ii].character.id == characterId
+          ) {
+            relationId = data.items[ii].id;
+          }
+        }
+      })
+      .then(data => {
+        if (flag == true) {
+          this.api.DeleteApplicantCharacter({ id: relationId });
+        } else {
+          //なければCreate
+          if (isNaN(parseInt(lastId, 10))) {
+            lastId = "0";
+          }
+          const createApplicantCharacter: CreateApplicantCharacterInput = {
+            id: (parseInt(lastId, 10) + 3).toString(10),
+            applicantCharacterCharacterId: characterId,
+            applicantCharacterApplicantId: this.user.id,
+            createdAt: now,
+            updatedAt: now
+          };
+          let create = this.api.CreateApplicantCharacter(
+            createApplicantCharacter
+          );
+        }
+      });
+    setTimeout("location.reload()", 1000);
   }
-  async skillToggle(id) {
-    console.log(id);
-
-    //DBに存在するかの確認
-
-    //あればDelete
-    //const input: DeleteApplicantCharacterInput = { id: "test" };
-    //await this.api.DeleteApplicantCharacter(input).then(data => {});
-
-    //なければCreate
+  async skillToggle(flag, skillId) {
+    const now = Math.floor(new Date().getTime());
+    var lastId = "0";
+    var relationId;
+    this.api
+      .ListApplicantSkills(null, null, null, null, ModelSortDirection.DESC)
+      .then(data => {
+        for (let ii = 0; ii < data.items.length; ii++) {
+          if (parseInt(lastId, 10) < parseInt(data.items[ii].id, 10)) {
+            lastId = data.items[ii].id;
+          }
+          if (
+            data.items[ii].applicant.id == this.user.id &&
+            data.items[ii].skill.id == skillId
+          ) {
+            relationId = data.items[ii].id;
+          }
+        }
+      })
+      .then(data => {
+        if (flag == true) {
+          this.api.DeleteApplicantSkill({ id: relationId });
+        } else {
+          console.log("1234");
+          //なければCreate
+          if (isNaN(parseInt(lastId, 10))) {
+            lastId = "0";
+          }
+          console.log((parseInt(lastId, 10) + 2).toString(10));
+          const createApplicantSkill: CreateApplicantSkillInput = {
+            id: (parseInt(lastId, 10) + 3).toString(10),
+            applicantSkillSkillId: skillId,
+            applicantSkillApplicantId: this.user.id,
+            createdAt: now,
+            updatedAt: now
+          };
+          let create = this.api.CreateApplicantSkill(createApplicantSkill);
+        }
+      });
+    setTimeout("location.reload()", 1000);
   }
 }

@@ -2,7 +2,11 @@
 <div id="wrapper">
   <app-nav></app-nav>
   <div class="columns">
-    <app-room-list class="column is-one-third" *ngIf="!isLogin"></app-room-list>
+    <app-room-list
+      class="column is-one-third"
+      *ngIf="!isLogin"
+      style="margin-top: 80px;"
+    ></app-room-list>
     <div class="column">
       <router-outlet></router-outlet>
     </div>

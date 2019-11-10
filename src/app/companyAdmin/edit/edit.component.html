@@ -23,12 +23,12 @@
           id="AreaList"
           class="form-control"
           style="width: 50%;"
-          [(ngModel)]="Area"
+          [(ngModel)]="AreaPara"
         >
           <option
             *ngFor="let Area of AreaList"
             [value]="Area.id"
-            [selected]="Area.id == Area.id"
+            [selected]="AreaPara === Area.content || AreaPara === Area.id"
           >
             {{ Area.content }}</option
           >
