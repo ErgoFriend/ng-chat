@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { AngularEditorConfig } from "@kolkov/angular-editor";
+import {Component, OnInit} from "@angular/core";
+import {AngularEditorConfig} from "@kolkov/angular-editor";
 
-import { CreateCommentInput, ArticleStatus } from "../../API.service";
-import API, { graphqlOperation } from "@aws-amplify/api";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import {CreateCommentInput, ArticleStatus} from "../../API.service";
+import API, {graphqlOperation} from "@aws-amplify/api";
+import {Router, ActivatedRoute, Params} from "@angular/router";
 
-import { Auth, Storage } from "aws-amplify";
+import {Auth, Storage} from "aws-amplify";
 declare interface TableData {
   headerRow: string[];
   dataRows: string[][];
 }
-import { MyAPIService } from "../../API.my";
-import { CreateInvitedRoomInput, invitedStatus } from "../../API.service";
-import { ulid } from "ulid";
+import {MyAPIService} from "../../API.my";
+import {CreateInvitedRoomInput, invitedStatus} from "../../API.service";
+import {ulid} from "ulid";
 
 @Component({
   selector: "detail-cmp",
@@ -64,7 +64,7 @@ export class DetailComponent implements OnInit {
     var dataString =
       '{ "query": "query GetArticle {getArticle(id:' +
       this.articleId +
-      ') {id,title,content,company {__typename,id,name,email,logo,backgroundImg,about,area {__typename,id,content,createdAt,updatedAt}},comments { __typename,items {__typename,id,content,user {__typename,id,username,displayName,logo,user_role,createdAt,updatedAt},createdAt,updatedAt}nextToken}}}" }';
+      ') {id,title,content,company {__typename,owner{__typename,id,username},id,name,email,logo,backgroundImg,about,area {__typename,id,content,createdAt,updatedAt}},comments { __typename,items {__typename,id,content,user {__typename,id,username,displayName,logo,user_role,createdAt,updatedAt},createdAt,updatedAt}nextToken}}}" }';
 
     console.log(dataString);
     const options = {
