@@ -1,4 +1,8 @@
-import { ArticleStatus, UpdateArticleInput } from "../../API.service";
+import {
+  ArticleStatus,
+  UpdateArticleInput,
+  ModelArticleFilterInput
+} from "../../API.service";
 import { Component, OnInit, QueryList } from "@angular/core";
 import Amplify, { Auth, Hub, graphqlOperation, Storage } from "aws-amplify";
 import { MyAPIService } from "../../API.my";
@@ -23,8 +27,15 @@ export class TableComponent implements OnInit {
     const loginedUser = await this.api.GetUser(cognitUser.username);
     this.user = loginedUser;
     //articleListにデータを突っ込む
-    this.api.ListArticles().then(data => {
-      this.articleList = data.items;
+    this.api.ListArticles(null, null, 30, null, null).then(data => {
+      var tmp = Array();
+      for (let i = 0; i < data.items.length; i++) {
+        if (data.items[i].company.id == this.user.id) {
+          tmp.push(data.items[i]);
+        }
+      }
+      this.articleList = tmp;
+      console.log(this.articleList);
     });
   }
 
@@ -49,15 +60,12 @@ export class TableComponent implements OnInit {
     const now = Math.floor(new Date().getTime());
     this.api.GetArticle(id).then(data => {
       tmp = data.isOpen;
-      console.log("qqqqqq" + tmp);
       const article: UpdateArticleInput = {
         id: id,
         isOpen: ArticleStatus.close,
         updatedAt: now
       };
-      console.log("qqqqqqaaaaa" + tmp);
       if (tmp == "open") {
-        console.log("12345");
         const article: UpdateArticleInput = {
           id: id,
           isOpen: ArticleStatus.close,
@@ -69,7 +77,6 @@ export class TableComponent implements OnInit {
           });
         });
       } else {
-        console.log("123456789");
         const article: UpdateArticleInput = {
           id: id,
           isOpen: ArticleStatus.open,

@@ -34,12 +34,7 @@
 			}
 		}
 	},
-	"storage": {
-		"s3c70369cc": {
-			"service": "S3",
-			"providerPlugin": "awscloudformation"
-		}
-	},
+	"storage": {},
 	"hosting": {
 		"S3AndCloudFront": {
 			"service": "S3AndCloudFront",

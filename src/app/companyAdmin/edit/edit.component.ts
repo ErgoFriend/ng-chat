@@ -1,7 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularEditorConfig } from "@kolkov/angular-editor";
 
-import { CreateArticleInput, ArticleStatus } from "../../API.service";
+import {
+  CreateArticleInput,
+  ArticleStatus,
+  UpdateArticleInput,
+  ModelAreaFilterInput,
+  ModelStringFilterInput,
+  ModelSortDirection
+} from "../../API.service";
 import API, { graphqlOperation } from "@aws-amplify/api";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
@@ -27,9 +34,12 @@ export class EditComponent implements OnInit {
   htmlContent = "";
   title = "";
   temId = "";
+  ArticleId = "";
   articleStatus = open;
   reader = new FileReader();
   fileUrl: Object | String;
+  AreaList: Array<any>;
+  Area: string;
 
   config: AngularEditorConfig = {
     editable: true,
@@ -73,16 +83,35 @@ export class EditComponent implements OnInit {
     let param1 = this.route.snapshot.queryParams["id"];
 
     //Getのパラメータをkeyにarticleを取得
-    await this.api.GetArticle(param1).then(data => {
-      this.title = data.title;
-      this.htmlContent = data.content;
-      Storage.get("article/" + data.id + ".png")
-        .then(result => {
-          console.log(result);
-          this.fileUrl = result;
-        })
-        .catch(err => console.log("1234"));
-    });
+    if (param1 != null) {
+      this.ArticleId = param1;
+      await this.api.GetArticle(param1).then(data => {
+        this.title = data.title;
+        this.htmlContent = data.content;
+        Storage.get("article/" + data.id + ".png")
+          .then(result => {
+            this.fileUrl = result;
+            this.api.ListAreas().then(data => {
+              console.log(data);
+              this.AreaList = data.items;
+              console.log(this.AreaList);
+            });
+            this.Area = data.area.content;
+            console.log(this.Area);
+          })
+          .catch(err => console.log("1234"));
+      });
+    } else {
+      this.api.ListAreas().then(data => {
+        this.AreaList = data.items;
+      });
+      this.api.ListAreas().then(data => {
+        console.log(data);
+        this.AreaList = data.items;
+        console.log(this.AreaList);
+        this.Area = data.items[0].content;
+      });
+    }
   }
 
   onFileChanged(event) {
@@ -97,27 +126,61 @@ export class EditComponent implements OnInit {
     var tempId = ulid();
     var filename = tempId + ".png";
     this.uploadImg(tempId);
-    const article: CreateArticleInput = {
-      id: tempId,
-      title: this.title,
-      thumbnail: filename,
-      content: this.htmlContent,
-      isOpen: ArticleStatus.open,
-      articleCompanyId: "test12345",
-      articleAreaId: "1",
-      createdAt: now,
-      updatedAt: now
-    };
-    const sent = await this.api.CreateArticle(article);
-    setTimeout("location.reload()", 1000);
+
+    for (let i = 0; i < this.AreaList.length; i++) {
+      if (
+        this.AreaList[i].content == this.Area ||
+        this.AreaList[i].id == this.Area
+      ) {
+        var areaId = this.AreaList[i].id;
+      }
+    }
+
+    if (this.ArticleId == null || this.ArticleId == "") {
+      var lastId;
+      this.api
+        .ListArticles(null, null, null, null, ModelSortDirection.DESC)
+        .then(data => {
+          var tmp = Array();
+          lastId = data.items[0].id;
+          const article: CreateArticleInput = {
+            id: (parseInt(lastId, 10) + 1).toString(10),
+            title: this.title,
+            thumbnail: filename,
+            content: this.htmlContent,
+            isOpen: ArticleStatus.open,
+            articleCompanyId: this.user.id,
+            articleAreaId: areaId,
+            createdAt: now,
+            updatedAt: now
+          };
+          const sent = this.api.CreateArticle(article);
+        });
+    } else {
+      const updateArticle: UpdateArticleInput = {
+        id: this.ArticleId,
+        title: this.title,
+        thumbnail: filename,
+        content: this.htmlContent,
+        isOpen: ArticleStatus.open,
+        articleCompanyId: this.user.id,
+        articleAreaId: areaId,
+        createdAt: now,
+        updatedAt: now
+      };
+      const update = await this.api.UpdateArticle(updateArticle);
+    }
+    //setTimeout("location.href='/companyAdmin/articlelist'", 1000);
   }
 
   async uploadImg(id) {
     const file = this.selectedFile;
-    console.log(id);
+    console.log(file);
+    // console.log(id);
     var filename = id + ".png";
-    console.log(filename);
+    //console.log(filename);
     Storage.put("article/" + filename, file, {
+      level: "public",
       contentType: "image/png"
     })
       .then(result => console.log(result)) // {key: "test.txt"}

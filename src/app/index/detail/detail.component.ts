@@ -1,18 +1,18 @@
-import {Component, OnInit} from "@angular/core";
-import {AngularEditorConfig} from "@kolkov/angular-editor";
+import { Component, OnInit } from "@angular/core";
+import { AngularEditorConfig } from "@kolkov/angular-editor";
 
-import {CreateCommentInput, ArticleStatus} from "../../API.service";
-import API, {graphqlOperation} from "@aws-amplify/api";
-import {Router, ActivatedRoute, Params} from "@angular/router";
+import { CreateCommentInput, ArticleStatus } from "../../API.service";
+import API, { graphqlOperation } from "@aws-amplify/api";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 
-import {Auth, Storage} from "aws-amplify";
+import { Auth, Storage } from "aws-amplify";
 declare interface TableData {
   headerRow: string[];
   dataRows: string[][];
 }
-import {MyAPIService} from "../../API.my";
-import {CreateInvitedRoomInput, invitedStatus} from "../../API.service";
-import {ulid} from "ulid";
+import { MyAPIService } from "../../API.my";
+import { CreateInvitedRoomInput, invitedStatus } from "../../API.service";
+import { ulid } from "ulid";
 
 @Component({
   selector: "detail-cmp",
@@ -42,8 +42,10 @@ export class DetailComponent implements OnInit {
     this.articleId = this.route.snapshot.queryParams["id"];
 
     //Getのパラメータをkeyにarticleを取得
-    await this.api.GetArticle(this.articleId).then(data => {
+    /*await this.api.MyGetArticle(this.articleId).then(data => {
       console.log(data);
+      console.log(data.comments.items);
+      this.comments = data.comments.items;
       this.company = data.company;
       this.title = data.title;
       this.htmlContent = data.content;
@@ -53,19 +55,43 @@ export class DetailComponent implements OnInit {
           this.fileUrl = result;
         })
         .catch(err => console.log("1234"));
-      this.api.ListComments().then(data => {
+       this.api.ListComments().then(data => {
         this.comments = data.items;
         console.log(this.comments);
       });
-    });
+  }); */
+
+    const url =
+      "https://elice4go7fd2tc6cw2ynyivxei.appsync-api.ap-northeast-1.amazonaws.com/graphql";
+
+    var dataString =
+      '{ "query": "query GetArticle {getArticle(id:' +
+      this.articleId +
+      ') {id,title,content,company {__typename,id,name,email,logo,backgroundImg,about,area {__typename,id,content,createdAt,updatedAt}},comments { __typename,items {__typename,id,content,user {__typename,id,username,displayName,logo,user_role,createdAt,updatedAt},createdAt,updatedAt}nextToken}}}" }';
+
+    console.log(dataString);
+    const options = {
+      headers: {
+        "Content-Type": "application/graphql",
+        "x-api-key": "da2-2gyv5pknsnarzcpyu3dzooaody"
+      },
+      body: dataString,
+      method: "Post"
+    };
+    fetch(url, options)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.company = data.data.getArticle.company;
+        this.comments = data.data.getArticle.comments.items;
+        this.title = data.data.getArticle.title;
+        this.htmlContent = data.data.getArticle.content;
+      });
   }
   async post() {
     //コメントの生成
     const now = Math.floor(new Date().getTime());
     var tempId = ulid();
-    console.log(this.comment);
-    console.log(this.user.id);
-    console.log(this.articleId);
 
     const commentInput: CreateCommentInput = {
       id: tempId,
@@ -77,6 +103,7 @@ export class DetailComponent implements OnInit {
     };
     console.log(commentInput);
     const sent = await this.api.CreateComment(commentInput).then();
+    setTimeout("location.reload()", 1000);
   }
 
   async newRoom() {

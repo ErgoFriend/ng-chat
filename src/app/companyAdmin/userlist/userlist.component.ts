@@ -33,14 +33,92 @@ export class UserlistComponent implements OnInit {
   userList: Array<any>;
   user: any;
 
+  CharacterList: Array<any>;
+  SkillList: Array<any>;
+
+  Character: string;
+  Skill: string;
+
   constructor(private api: MyAPIService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    //characterのロジック
+    await this.api.ListCharacters().then(data => {
+      this.CharacterList = data.items;
+    });
+    //skillのロジック
+    await this.api.ListSkills().then(data => {
+      this.SkillList = data.items;
+    });
+  }
 
   search() {
-    this.api.ListApplicants().then(data => {
-      this.userList = data.items;
+    console.log(this.Character);
+    console.log(this.Skill);
+    var check = Array();
+
+    this.api.MyListApplicants().then(data => {
+      var tmpOnlyId = Array();
+      // console.log(data);
+      for (let ii = 0; ii < data.items.length; ii++) {
+        // console.log(this.Skill);
+        // console.log(this.Character);
+
+        var user = this.api.MyGetApplicant(data.items[ii].id).then(user => {
+          console.log(user);
+          if (parseInt(this.Character, 10) >= 1) {
+            // console.log("両方");
+            for (let j = 0; j < user.characters.items.length; j++) {
+              if (parseInt(this.Skill, 10) >= 1) {
+                //両方あり
+                //console.log("両方あり");
+                for (let k = 0; k < user.skills.items.length; k++) {
+                  if (
+                    user.skills.items[k].id == this.Skill &&
+                    user.characters.items[j].id == this.Character
+                  ) {
+                    if (check.indexOf(data.items[ii]) == -1) {
+                      check.push(data.items[ii]);
+                    }
+                  }
+                }
+              } else {
+                if (user.characters.items[j].id == this.Character) {
+                  //性格だけ
+                  //  console.log("性格だけ");
+                  if (check.indexOf(data.items[ii]) == -1) {
+                    check.push(data.items[ii]);
+                  }
+                }
+              }
+            }
+          } else {
+            //   console.log("両方dake");
+
+            if (parseInt(this.Skill, 10) >= 1) {
+              //   console.log("スキルだけ");
+              //スキルだけ
+              for (let k = 0; k < user.skills.items.length; k++) {
+                if (user.skills.items[k].id == this.Skill) {
+                  if (check.indexOf(data.items[ii]) == -1) {
+                    check.push(data.items[ii]);
+                  }
+                }
+              }
+            } else {
+              // console.log("両方なし");
+              //両方なし
+              // if (check.indexOf(data.items[ii]) == -1) {
+              check.push(data.items[ii]);
+              //}
+            }
+          }
+        });
+        // console.log("1");
+      }
     });
+    this.userList = check;
+    console.log(this.userList);
   }
 
   async newRoom(applicantID: string) {

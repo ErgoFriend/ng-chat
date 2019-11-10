@@ -3,16 +3,55 @@
     <div class="card">
       <div class="card-header">
         <div class="row" style="width:100%;">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <h4 class="card-title">連絡候補リスト</h4>
           </div>
-          <div class="col-md-6">
-            <h4 class="card-title" style="float: right;">
+          <div class="col-md-1">
+            <p class="card-title">性格:</p>
+          </div>
+          <div class="col-md-2">
+            <select
+              id="CharacterList"
+              class="form-control"
+              [(ngModel)]="Character"
+              style="margin-top: 10px;"
+            >
+              <option></option>
+              <option
+                *ngFor="let Character of CharacterList"
+                [value]="Character.id"
+              >
+                {{ Character.content }}</option
+              >
+            </select>
+          </div>
+
+          <div class="col-md-1">
+            <p class="card-title">スキル:</p>
+          </div>
+          <div class="col-md-2">
+            <select
+              id="SkillList"
+              class="form-control"
+              style="width: 50%;"
+              [(ngModel)]="Skill"
+              style="margin-top: 10px;"
+              ng-init=""
+            >
+              <option></option>
+              <option *ngFor="let Skill of SkillList" [value]="Skill.id">
+                {{ Skill.content }}</option
+              >
+            </select>
+          </div>
+          <div class="col-md-3">
+            <h4 class="card-title" style="float: right;margin-top: 0px;">
               <button
                 type="submit"
                 class="btn btn-primary btn-round"
                 style="font-size: 14px;margin:unset!important;"
                 (click)="search()"
+                ng-init=""
               >
                 検索
               </button>
@@ -31,9 +70,6 @@
                 Appeal
               </th>
               <th>
-                Area
-              </th>
-              <th>
                 性格
               </th>
               <th>
@@ -47,68 +83,34 @@
               <tr *ngFor="let user of userList; let i = index">
                 <td>{{ user.lastName }}&nbsp;{{ user.firstName }}</td>
                 <td>"{{ user.about }}"</td>
-                <td>
-                  東京都・中央区
-                </td>
-                <td>
+
+                <td style="width: 20%;">
                   <div class="d-flex">
-                    <div style="padding: 1px;">
-                      <button
-                        type="submit"
-                        class="btn  btn-round"
-                        style="background-color: #f6b989;"
-                      >
-                        照れ屋
-                      </button>
-                    </div>
-                    <div style="padding: 1px;">
-                      <button
-                        type="submit"
-                        class="btn  btn-round"
-                        style="background-color: #f6b989;"
-                      >
-                        気さく
-                      </button>
-                    </div>
-                    <div style="padding: 1px;">
-                      <button
-                        type="submit"
-                        class="btn  btn-round"
-                        style="background-color: #f6b989;"
-                      >
-                        お調子者
-                      </button>
+                    <div *ngFor="let Character of user.characters.items">
+                      <div style="padding: 1px;">
+                        <button
+                          type="submit"
+                          class="btn  btn-round"
+                          style="background-color: #f6b989;"
+                        >
+                          {{ Character.character.content }}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </td>
                 <td style="text-align: center;">
                   <div class="d-flex">
-                    <div style="padding: 1px;">
-                      <button
-                        type="submit"
-                        class="btn  btn-round"
-                        style="background-color:#70d4d7"
-                      >
-                        プログラミング
-                      </button>
-                    </div>
-                    <div style="padding: 1px;">
-                      <button
-                        type="submit"
-                        class="btn  btn-round"
-                        style="background-color:#70d4d7"
-                      >
-                        新規事業
-                      </button>
-                    </div>
-                    <div style="padding: 1px;">
-                      <button
-                        type="submit"
-                        class="btn btn-round"
-                        style="background-color:#70d4d7"
-                      >
-                        会計
-                      </button>
+                    <div *ngFor="let Skill of user.skills.items">
+                      <div style="padding: 1px;">
+                        <button
+                          type="submit"
+                          class="btn  btn-round"
+                          style="background-color:#70d4d7"
+                        >
+                          {{ Skill.skill.content }}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </td>

@@ -1,3 +1,14 @@
+<style>
+  .btn_Orange {
+    background-color: #f6b989;
+    padding: 15px;
+  }
+
+  .btn_Orange:hover {
+    background-color: #f49571 !important;
+    padding: 15px;
+  }
+</style>
 <div class="row">
   <div class="col-md-4">
     <div class="card card-user">
@@ -79,6 +90,65 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>スキル</label>
+                <div class="d-flex">
+                  <div *ngFor="let workType of workTypeListForView">
+                    <button
+                      type="submit"
+                      class="btn  btn-primary btn-round"
+                      style="padding: 15px;"
+                      *ngIf="workType.flag == true"
+                      (click)="workTypeToggle(workType.flag, workType.id)"
+                    >
+                      {{ workType.content }}
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn  btn-round"
+                      style="background-color:grey;padding: 15px;"
+                      *ngIf="workType.flag == false"
+                      (click)="workTypeToggle(workType.flag, workType.id)"
+                    >
+                      {{ workType.content }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>性格</label>
+                <div class="d-flex">
+                  <div *ngFor="let styleType of styleTypeListForView">
+                    <button
+                      type="submit"
+                      class="btn btn_Orange btn-round"
+                      *ngIf="styleType.flag == true"
+                      (click)="styleTypeToggle(styleType.flag, styleType.id)"
+                    >
+                      {{ styleType.content }}
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn  btn-round"
+                      style="background-color: grey;padding: 15px;"
+                      *ngIf="styleType.flag == false"
+                      (click)="styleTypeToggle(styleType.flag, styleType.id)"
+                    >
+                      {{ styleType.content }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-8">
               <label>Background Img</label>

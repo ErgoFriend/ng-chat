@@ -15,8 +15,6 @@ export class IndexComponent implements OnInit {
   user: any;
   constructor(private api: MyAPIService) {}
   async ngOnInit() {
-    var aaaa = this.Get();
-    console.log(aaaa);
     const cognitUser = await Auth.currentAuthenticatedUser();
     const loginedUser = await this.api.GetUser(cognitUser.username);
     this.user = loginedUser;
@@ -58,32 +56,11 @@ export class IndexComponent implements OnInit {
     // リクエストをURLに送信
     request.send();
 
-    //articleListにデータを突っ込む
-    this.api.ListArticles().then(data => {
-      var tmp = Array();
-      for (let i = 0; i < data.items.length; i++) {
-        Storage.get("article/" + data.items[i].id + ".png")
-          .then(result => {
-            console.log(result);
-            tmp.push(result);
-          })
-          .catch(err => console.log("1234"));
-      }
-      this.articleList = data.items;
-      this.articleImgList = tmp;
-    });
-  }
-
-  redirect(id) {
-    location.href = "/detail?id=" + id;
-  }
-
-  Get() {
     const url =
       "https://elice4go7fd2tc6cw2ynyivxei.appsync-api.ap-northeast-1.amazonaws.com/graphql";
 
     var dataString =
-      '{ "query": "query GetArticle {getArticle(id:2) {id,title}}" }';
+      '{ "query": "query GetArticle {getArticle(id:2) {id,title,comments { __typename,items {__typename,id,content,user {__typename,id,username,displayName,logo,user_role,createdAt,updatedAt},createdAt,updatedAt}nextToken}}}" }';
 
     var dataString =
       '{ "query": "query ListArticles($id: ID, $filter: ModelArticleFilterInput, $limit: Int, $nextToken: String, $sortDirection: ModelSortDirection) {listArticles(id: $id, filter: $filter, limit: $limit, nextToken: $nextToken, sortDirection: $sortDirection) {__typename,items {__typename,id,title,thumbnail,content,isOpen,createdAt,updatedAt,},nextToken}}" }';
@@ -96,35 +73,30 @@ export class IndexComponent implements OnInit {
       body: dataString,
       method: "Post"
     };
-    console.log("aaaa");
     fetch(url, options)
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        this.articleList = data.data.listArticles.items;
+      });
 
-    /* var request = require("request");
-
-    var headers = {
-      "Content-Type": "application/graphql",
-      "x-api-key": "da2-2gyv5pknsnarzcpyu3dzooaody"
-    };
-
-    var dataString =
-      '{ "query": "query GetArticle {getArticle(id:"01DRRRPDF2K2VG5CFJZXB0Q0S5") {id,title}}" }';
-
-    var options = {
-      url:
-        "https://elice4go7fd2tc6cw2ynyivxei.appsync-api.ap-northeast-1.amazonaws.com/graphql",
-      method: "POST",
-      headers: headers,
-      body: dataString
-    };
-
-    function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body);
+    //articleListにデータを突っ込む
+    /*this.api.ListArticles().then(data => {
+      var tmp = Array();
+      for (let i = 0; i < data.items.length; i++) {
+        Storage.get("article/" + data.items[i].id + ".png")
+          .then(result => {
+            console.log(result);
+            tmp.push(result);
+          })
+          .catch(err => console.log("1234"));
       }
-    }
+      this.articleList = data.items;
+      this.articleImgList = tmp;
+    });*/
+  }
 
-    request(options, callback);*/
+  redirect(id) {
+    location.href = "/detail?id=" + id;
   }
 }
