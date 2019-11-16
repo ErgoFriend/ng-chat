@@ -8,6 +8,7 @@
     background-color: #f49571 !important;
     padding: 15px;
   }
+
 </style>
 <div class="row">
   <div class="col-md-4">
@@ -41,26 +42,16 @@
             <div class="col-md-5 pr-1">
               <div class="form-group">
                 <label>Companyname</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Companyname"
-                  name="companyName"
-                  [(ngModel)]="companyName"
-                />
+                <input type="text" class="form-control" placeholder="Companyname" name="companyName"
+                  [(ngModel)]="companyName" />
               </div>
             </div>
 
             <div class="col-md-7 pl-1">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="Email"
-                  name="companyEmail"
-                  [(ngModel)]="companyEmail"
-                />
+                <input type="email" class="form-control" placeholder="Email" name="companyEmail"
+                  [(ngModel)]="companyEmail" />
               </div>
             </div>
           </div>
@@ -69,12 +60,7 @@
             <div class="col-md-4 pr-1">
               <div class="form-group">
                 <label>City</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="City"
-                  value="東京都江東区"
-                />
+                <input type="text" class="form-control" placeholder="City" value="東京都江東区" />
               </div>
             </div>
           </div>
@@ -82,11 +68,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>About Me</label>
-                <textarea
-                  class="form-control textarea"
-                  name="companyAbout"
-                  [(ngModel)]="companyAbout"
-                ></textarea>
+                <textarea class="form-control textarea" name="companyAbout" [(ngModel)]="companyAbout"></textarea>
               </div>
             </div>
           </div>
@@ -96,22 +78,12 @@
                 <label>スキル</label>
                 <div class="d-flex">
                   <div *ngFor="let workType of workTypeListForView">
-                    <button
-                      type="submit"
-                      class="btn  btn-primary btn-round"
-                      style="padding: 15px;"
-                      *ngIf="workType.flag == true"
-                      (click)="workTypeToggle(workType.flag, workType.id)"
-                    >
+                    <button type="submit" class="btn  btn-primary btn-round" style="padding: 15px;"
+                      *ngIf="workType.flag == true" (click)="workTypeToggle(workType.flag, workType.id)">
                       {{ workType.content }}
                     </button>
-                    <button
-                      type="submit"
-                      class="btn  btn-round"
-                      style="background-color:grey;padding: 15px;"
-                      *ngIf="workType.flag == false"
-                      (click)="workTypeToggle(workType.flag, workType.id)"
-                    >
+                    <button type="submit" class="btn  btn-round" style="background-color:grey;padding: 15px;"
+                      *ngIf="workType.flag == false" (click)="workTypeToggle(workType.flag, workType.id)">
                       {{ workType.content }}
                     </button>
                   </div>
@@ -126,21 +98,12 @@
                 <label>性格</label>
                 <div class="d-flex">
                   <div *ngFor="let styleType of styleTypeListForView">
-                    <button
-                      type="submit"
-                      class="btn btn_Orange btn-round"
-                      *ngIf="styleType.flag == true"
-                      (click)="styleTypeToggle(styleType.flag, styleType.id)"
-                    >
+                    <button type="submit" class="btn btn_Orange btn-round" *ngIf="styleType.flag == true"
+                      (click)="styleTypeToggle(styleType.flag, styleType.id)">
                       {{ styleType.content }}
                     </button>
-                    <button
-                      type="submit"
-                      class="btn  btn-round"
-                      style="background-color: grey;padding: 15px;"
-                      *ngIf="styleType.flag == false"
-                      (click)="styleTypeToggle(styleType.flag, styleType.id)"
-                    >
+                    <button type="submit" class="btn  btn-round" style="background-color: grey;padding: 15px;"
+                      *ngIf="styleType.flag == false" (click)="styleTypeToggle(styleType.flag, styleType.id)">
                       {{ styleType.content }}
                     </button>
                   </div>
@@ -154,17 +117,9 @@
               <label>Background Img</label>
               <div class="input-group">
                 <div class="custom-file">
-                  <input
-                    type="file"
-                    class="custom-file-input"
-                    id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01"
-                    (change)="onFileChangedBackground($event)"
-                    #fileInput
-                  />
-                  <label class="custom-file-label" for="inputGroupFile01"
-                    >Choose file</label
-                  >
+                  <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01" (change)="onFileChangedBackground($event)" #fileInput />
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                 </div>
               </div>
             </div>
@@ -179,17 +134,9 @@
               <label>Profile Img</label>
               <div class="input-group">
                 <div class="custom-file">
-                  <input
-                    type="file"
-                    class="custom-file-input"
-                    id="inputGroupFile02"
-                    aria-describedby="inputGroupFileAddon02"
-                    (change)="onFileChangedProfile($event)"
-                    #fileInput
-                  />
-                  <label class="custom-file-label" for="inputGroupFile02"
-                    >Choose file</label
-                  >
+                  <input type="file" class="custom-file-input" id="inputGroupFile02"
+                    aria-describedby="inputGroupFileAddon02" (change)="onFileChangedProfile($event)" #fileInput />
+                  <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
                 </div>
               </div>
             </div>
@@ -201,11 +148,7 @@
           </div>
           <div class="row">
             <div class="update ml-auto mr-auto">
-              <button
-                type="submit"
-                class="btn btn-primary btn-round"
-                (click)="publish()"
-              >
+              <button type="submit" class="btn btn-primary btn-round" (click)="publish()">
                 Update Profile
               </button>
             </div>

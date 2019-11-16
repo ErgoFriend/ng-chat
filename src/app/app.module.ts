@@ -60,6 +60,7 @@ import { CreateCompanyUserComponent } from "./auth/components/company/create/cre
 import { LoginCompanyUserComponent } from "./auth/components/company/login/login.component";
 import { ConfirmEmailComponent } from "./auth/confirm-email/confirm-email.component";
 import { UserModalComponent } from "./room/user-modal/user-modal.component";
+import { BillsComponent } from './companyAdmin/bills/bills.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { UserModalComponent } from "./room/user-modal/user-modal.component";
     LoginApplicantUserComponent,
     ConfirmEmailComponent,
     UserModalComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BillsComponent
   ],
   imports: [
     BrowserModule,
