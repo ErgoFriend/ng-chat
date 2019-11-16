@@ -1,0 +1,318 @@
+.cell {
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+    0 3px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  /* position: relative; */
+  -ms-flex: auto;
+  flex: auto;
+  min-width: 100%;
+  min-height: 80vh;
+  padding: 0 40px;
+  /* background-color: #c4503c; */
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "pnum";
+  font-variant-numeric: proportional-nums;
+}
+
+.example form {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  transition-property: opacity,
+    transform;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.example.example1 fieldset {
+  margin: 0 15px 20px;
+  padding: 0;
+  border-style: none;
+  /* background-color: #7795f8;
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06),
+    0 2px 5px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 #829fff; */
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.example.example1 .row {
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 15px;
+
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  box-sizing: border-box;
+}
+
+.example.example1 label {
+
+  width: 15%;
+  min-width: 70px;
+  padding: 11px 0;
+  color: #ffba6c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  box-sizing: border-box;
+}
+
+/* 各ベンダープレフィックスが取れた標準版！！(http://caniuse.com/#search=placeholder-shown) */
+:placeholder-shown {
+  color: #646464;
+}
+
+/* Google Chrome, Safari, Opera 15+, Android, iOS */
+::-webkit-input-placeholder {
+  color: #646464;
+}
+
+/* Firefox 18- */
+:-moz-placeholder {
+  color: #646464;
+  opacity: 1;
+}
+
+/* Firefox 19+ */
+::-moz-placeholder {
+  color: #646464;
+  opacity: 1;
+}
+
+/* IE 10+ */
+:-ms-input-placeholder {
+  color: #646464;
+}
+
+.example.example1 input {
+  width: 100%;
+  padding: 11px 15px 11px 0;
+  color: #4a4a4b;
+  background-color: #fff;
+
+  background-color: transparent;
+  -webkit-animation: 1ms void-animation-out;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border-style: none;
+
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #ffa26b;
+}
+
+.example.example1 .StripeElement {
+  width: 100%;
+  padding: 11px 15px 11px 0;
+
+  font-family: Roboto,
+    Open Sans,
+    Segoe UI,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  box-sizing: border-box;
+}
+
+
+.example.example1 button {
+  display: block;
+  width: calc(100% - 30px);
+  height: 40px;
+  margin: 40px 15px 0;
+  background-color: #51cbce;
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06),
+    0 2px 5px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 #51cbce;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.example.example1 button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border-style: none;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+select {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+}
+
+.example .error {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  margin-top: 20px;
+  left: 0;
+  padding: 0 15px;
+  font-size: 13px !important;
+  opacity: 0;
+  transform: translateY(10px);
+  transition-property: opacity, transform;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+@media screen and (min-width: 670px) {
+  .example .success {
+    padding: 40px;
+  }
+}
+
+.example .success {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  text-align: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.example .success .icon {
+  margin: 15px 0 30px;
+  transform: translateY(70px) scale(0.75);
+}
+
+.example .success>* {
+  transition-property: opacity, transform;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.example .success .icon svg {
+  will-change: transform;
+}
+
+.example .success .title {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.success .title {
+  color: #fff;
+}
+
+.example .success>* {
+  transition-property: opacity, transform;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.example .success .message {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  line-height: 1.6em;
+}
+
+.success .message {
+  color: #9cdbff;
+}
+
+.example .success .message span {
+  font-size: inherit;
+}
+
+.example .success .reset svg {
+  will-change: transform;
+}

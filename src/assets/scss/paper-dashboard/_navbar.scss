@@ -17,6 +17,7 @@
   }
 
   &.bg-white {
+
     .input-group .form-control,
     .input-group.no-border .form-control {
       color: $default-color;
@@ -25,6 +26,7 @@
         color: $default-color;
       }
     }
+
     .input-group-prepend .input-group-text i,
     .input-group-append .input-group-text i {
       color: $default-color;
@@ -118,9 +120,11 @@
 
     .nav-link.btn {
       padding: $padding-btn-vertical $padding-btn-horizontal;
+
       &.btn-lg {
         padding: $padding-large-vertical $padding-large-horizontal;
       }
+
       &.btn-sm {
         padding: $padding-small-vertical $padding-small-horizontal;
       }
@@ -133,8 +137,8 @@
       line-height: $line-height-nav-link;
       margin-right: 3px;
 
-      i.fa + p,
-      i.nc-icon + p {
+      i.fa+p,
+      i.nc-icon+p {
         margin-left: 3px;
       }
 
@@ -215,7 +219,7 @@
   &.navbar-transparent {
     background-color: $transparent-bg !important;
     box-shadow: none;
-    border-bottom: 1px solid #ddd;
+    // border-bottom: 1px solid #ddd;
 
     a:not(.dropdown-item):not(.btn) {
       color: $default-color;
@@ -233,6 +237,7 @@
     .nav-item .nav-link:not(.btn) {
       color: $default-color;
     }
+
     .nav-item.active .nav-link:not(.btn),
     .nav-item .nav-link:not(.btn):focus,
     .nav-item .nav-link:not(.btn):hover,
