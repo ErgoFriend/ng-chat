@@ -51,6 +51,7 @@ import { TableComponent } from "./companyAdmin/table/table.component";
 
 import { IndexComponent } from "./index/index/index.component";
 import { LandingPageComponent } from "./index/landingpage/landingpage.component";
+import { LandingPageApplicantComponent } from "./index/landingpageApplicant/landingpageApplicant.component";
 import { DetailComponent } from "./index/detail/detail.component";
 import { NavigationBarComponent } from "./shared/default/navigation-bar/navigation-bar.component";
 import { AuthLayoutComponent } from "./auth/components/layout/layout.component";
@@ -95,7 +96,8 @@ import { UserModalComponent } from "./room/user-modal/user-modal.component";
     LoginApplicantUserComponent,
     ConfirmEmailComponent,
     UserModalComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    LandingPageApplicantComponent
   ],
   imports: [
     BrowserModule,

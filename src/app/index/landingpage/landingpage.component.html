@@ -24,11 +24,8 @@
   <div class="container">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-6 mt-lg-5 text-center">
-        <h1 style="height:unset;">Buy and sell real estate properties!!!!!</h1>
-        <p class="mb-5" style="height:unset;">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          assumenda ea quo cupiditate facere deleniti fuga officia.
-        </p>
+        <h1 style="height:unset;">Local work is pleasure</h1>
+        <h1 style="height:unset;">Local companies are treasure</h1>
       </div>
     </div>
   </div>
@@ -53,9 +50,9 @@
       <div class="col-md-4 text-center">
         <div class="pr-5">
           <span class="custom-icon flaticon-house text-primary"></span>
-          <h3 class="text-dark">Find Property.</h3>
+          <h3 class="text-dark">想いを伝える求人</h3>
           <p style="height:unset;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            条件にとらわれず、<br />共感してくれる人と働く
           </p>
         </div>
       </div>
@@ -63,9 +60,9 @@
       <div class="col-md-4 text-center">
         <div class="pr-5">
           <span class="custom-icon flaticon-coin text-primary"></span>
-          <h3 class="text-dark">Buy Property.</h3>
+          <h3 class="text-dark">低コスト</h3>
           <p style="height:unset;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            求人広告料としては考えられなかった<br />１万円以下の広告
           </p>
         </div>
       </div>
@@ -73,9 +70,9 @@
       <div class="col-md-4 text-center">
         <div class="pr-5">
           <span class="custom-icon flaticon-home text-primary"></span>
-          <h3 class="text-dark">Make Investment.</h3>
+          <h3 class="text-dark">求職者とコミュニケーション</h3>
           <p style="height:unset;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            今までの「待つ」求人広告ではなく<br />能動的に求職者を探せる求人プラットフォーム
           </p>
         </div>
       </div>
@@ -98,167 +95,83 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 ">
-        <div
-          style="width: 80%;width: 80%;margin: 0 auto; padding-top: 20px;padding-bottom: 20px;"
-        >
-          <h5 style="font-family: unset;">一般ユーザー登録</h5>
-          <div class="field">
-            <label class="label">ユーザー名</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-success"
-                type="text"
-                [(ngModel)]="usernameApplicant"
-              />
-              <span class="icon is-small is-left">
-                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
-              </span>
-            </div>
-            <!--<p class="help is-success">This username is available</p>-->
-          </div>
+      <div
+        style="width: 60%;margin: 0 auto;padding-top: 20px;padding-bottom: 20px;"
+      >
+        <h5 style="font-family: unset;">企業ユーザー登録</h5>
 
-          <div class="field">
-            <label class="label">メールアドレス</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-success"
-                type="email"
-                [(ngModel)]="emailApplicant"
-              />
-              <span class="icon is-small is-left">
-                <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
-              </span>
-            </div>
-            <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
+        <div class="field">
+          <label class="label">ユーザー名</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              class="input is-success"
+              type="text"
+              [(ngModel)]="usernameComapny"
+            />
+            <span class="icon is-small is-left">
+              <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+            </span>
           </div>
-
-          <div class="field">
-            <label class="label">パスワード</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-success"
-                type="password"
-                [(ngModel)]="passwordApplicant"
-              />
-              <span class="icon is-small is-left">
-                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
-              </span>
-            </div>
-            <!-- <p class="help is-success">ok</p> -->
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="checkApplicant" />
-                <a href="#">利用規約</a>に同意します。
-              </label>
-            </div>
-            <p class="help is-danger">{{ messageApplicant }}</p>
-          </div>
-
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-link" (click)="createApplicant()">
-                アカウントを作成
-              </button>
-            </div>
-            <div class="control">
-              <button class="button is-danger is-inverted">やめる</button>
-            </div>
-          </div>
+          <!--<p class="help is-success">This username is available</p>-->
         </div>
-      </div>
 
-      <div class="col-md-6 ">
-        <div
-          style="width: 80%;margin: 0 auto;padding-top: 20px;padding-bottom: 20px;"
-        >
-          <h5 style="font-family: unset;">企業ユーザー登録</h5>
-
-          <div class="field">
-            <label class="label">ユーザー名</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-success"
-                type="text"
-                [(ngModel)]="usernameComapny"
-              />
-              <span class="icon is-small is-left">
-                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
-              </span>
-            </div>
-            <!--<p class="help is-success">This username is available</p>-->
+        <div class="field">
+          <label class="label">メールアドレス</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              class="input is-success"
+              type="email"
+              [(ngModel)]="emailComapny"
+            />
+            <span class="icon is-small is-left">
+              <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+            </span>
           </div>
+          <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
+        </div>
 
-          <div class="field">
-            <label class="label">メールアドレス</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-success"
-                type="email"
-                [(ngModel)]="emailComapny"
-              />
-              <span class="icon is-small is-left">
-                <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
-              </span>
-            </div>
-            <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
+        <div class="field">
+          <label class="label">パスワード</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              class="input is-success"
+              type="password"
+              [(ngModel)]="passwordComapny"
+            />
+            <span class="icon is-small is-left">
+              <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+            </span>
           </div>
+          <!-- <p class="help is-success">ok</p> -->
+        </div>
 
-          <div class="field">
-            <label class="label">パスワード</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input is-success"
-                type="password"
-                [(ngModel)]="passwordComapny"
-              />
-              <span class="icon is-small is-left">
-                <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
-              </span>
-            </div>
-            <!-- <p class="help is-success">ok</p> -->
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" [(ngModel)]="checkCompany" />
+              <a href="#">利用規約</a>に同意します。
+            </label>
           </div>
+          <p class="help is-danger">{{ messageComapny }}</p>
+        </div>
 
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input type="checkbox" [(ngModel)]="checkCompany" />
-                <a href="#">利用規約</a>に同意します。
-              </label>
-            </div>
-            <p class="help is-danger">{{ messageComapny }}</p>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" (click)="createComapny()">
+              アカウントを作成
+            </button>
           </div>
-
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-link" (click)="createComapny()">
-                アカウントを作成
-              </button>
-            </div>
-            <div class="control">
-              <button class="button is-danger is-inverted">やめる</button>
-            </div>
+          <div class="control">
+            <button class="button is-danger is-inverted">やめる</button>
           </div>
         </div>
       </div>
@@ -515,6 +428,41 @@
 </section>-->
 
 <section class="site-section  bg-image" id="contact-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <!-- <h3 class="section-sub-title">Get</h3> -->
+        <h2 class="section-title mb-3">利用の流れ</h2>
+      </div>
+
+      <div class="col-12 text-left">
+        <!-- <h3 class="section-sub-title">Get</h3> -->
+        <h5>1.担当者による登録</h5>
+        <p>IDが発行されます。</p>
+        <br />
+        <h5>2.企業登録の項目を埋める。</h5>
+        <p>イメージの伝わりやすい写真や動画をアップしましょう。</p>
+        <br />
+        <h5>3.１日に一度はサイトをチェック。</h5>
+        <p>
+          興味のある人材を見つけたらいくつでも「興味あり」をクリックしておきます。
+        </p>
+        <br />
+        <h5>
+          4.メッセンジャーボックスはユーザが許可していればいつでも使えます。
+        </h5>
+        <br />
+        <p>気になる人物への質問や交渉に使いましょう。</p>
+        <br />
+        <h5>5.雇用時には必ず労働基準法に剃った契約を行ってください。</h5>
+        <br />
+        <br />
+        <h5>6.雇用が開始された後、ユーザ評価のご協力をお願い致します</h5>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-5 bg-light site-section" id="contact-section">
   <div class="container">
     <div class="row mb-5">
       <div class="col-12 text-center">

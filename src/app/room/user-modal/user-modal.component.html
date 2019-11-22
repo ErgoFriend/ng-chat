@@ -1,4 +1,4 @@
-<img class="is-rounded" [src]="src" (click)="toggleModal()">
+<img class="is-rounded" [src]="src" (click)="toggleModal()" />
 <div class="modal" [class.is-active]="isOpen">
   <div class="modal-background" (click)="toggleModal()"></div>
   <div class="modal-card">
@@ -17,21 +17,33 @@
         <p class="description text-center">"{{ applicantAbout }}"</p>
         <div style="padding: 10px;">
           <p class="description text-left" style="margin: 0;">
-            スキル
+            希望内容
           </p>
           <div class="d-flex">
             <div>
-              <button type="submit" class="btn  btn-round" style="background-color:#70d4d7">
+              <button
+                type="submit"
+                class="btn  btn-round"
+                style="background-color:#70d4d7"
+              >
                 プログラミング
               </button>
             </div>
             <div>
-              <button type="submit" class="btn  btn-round" style="background-color:#70d4d7">
+              <button
+                type="submit"
+                class="btn  btn-round"
+                style="background-color:#70d4d7"
+              >
                 新規事業
               </button>
             </div>
             <div>
-              <button type="submit" class="btn btn-round" style="background-color:#70d4d7">
+              <button
+                type="submit"
+                class="btn btn-round"
+                style="background-color:#70d4d7"
+              >
                 会計
               </button>
             </div>
@@ -39,21 +51,33 @@
         </div>
         <div style="padding: 10px;">
           <p class="description text-left" style="margin: 0;">
-            性格
+            パーソナリティ
           </p>
           <div class="d-flex">
             <div>
-              <button type="submit" class="btn  btn-round" style="background-color: #f6b989;">
+              <button
+                type="submit"
+                class="btn  btn-round"
+                style="background-color: #f6b989;"
+              >
                 照れ屋
               </button>
             </div>
             <div>
-              <button type="submit" class="btn  btn-round" style="background-color: #f6b989;">
+              <button
+                type="submit"
+                class="btn  btn-round"
+                style="background-color: #f6b989;"
+              >
                 気さく
               </button>
             </div>
             <div>
-              <button type="submit" class="btn  btn-round" style="background-color: #f6b989;">
+              <button
+                type="submit"
+                class="btn  btn-round"
+                style="background-color: #f6b989;"
+              >
                 お調子者
               </button>
             </div>

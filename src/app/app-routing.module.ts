@@ -21,6 +21,7 @@ import { UserlistComponent } from "./companyAdmin/userlist/userlist.component";
 import { IndexComponent } from "./index/index/index.component";
 import { DetailComponent } from "./index/detail/detail.component";
 import { LandingPageComponent } from "./index/landingpage/landingpage.component";
+import { LandingPageApplicantComponent } from "./index/landingpageApplicant/landingpageApplicant.component";
 
 // Auth
 import { AuthLayoutComponent } from "./auth/components/layout/layout.component";
@@ -152,6 +153,10 @@ const routes: Routes = [
       {
         path: "landingpage",
         component: LandingPageComponent
+      },
+      {
+        path: "landingpageApplicant",
+        component: LandingPageApplicantComponent
       }
     ]
   }
