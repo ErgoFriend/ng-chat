@@ -1,9 +1,37 @@
 <h4>企業ユーザー登録</h4>
 
 <div class="field">
-  <label class="label">ユーザー名</label>
+  <label class="label">企業名</label>
   <div class="control has-icons-left has-icons-right">
     <input class="input is-success" type="text" [(ngModel)]="username" />
+    <span class="icon is-small is-left">
+      <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+    </span>
+  </div>
+  <!--<p class="help is-success">This username is available</p>-->
+</div>
+
+<div class="field">
+  <label class="label">郵便番号</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="text" [(ngModel)]="postnumber" />
+    <span class="icon is-small is-left">
+      <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+    </span>
+  </div>
+  <!--<p class="help is-success">This username is available</p>-->
+</div>
+
+<div class="field">
+  <label class="label">担当者名</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="text" [(ngModel)]="name" />
     <span class="icon is-small is-left">
       <i class="nc-icon nc-single-02" style="font-size: 12px;"></i>
     </span>
@@ -29,6 +57,20 @@
 </div>
 
 <div class="field">
+  <label class="label">電話番号</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="phone" [(ngModel)]="phone" />
+    <span class="icon is-small is-left">
+      <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+    </span>
+  </div>
+  <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
+</div>
+
+<div class="field">
   <label class="label">パスワード</label>
   <div class="control has-icons-left has-icons-right">
     <input class="input is-success" type="password" [(ngModel)]="password" />
@@ -40,6 +82,16 @@
     </span>
   </div>
   <!-- <p class="help is-success">ok</p> -->
+</div>
+
+<div class="field">
+  <div class="control">
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="duplicatecheck" />
+      複数店舗登録
+    </label>
+  </div>
+  <p class="help is-danger">{{ message }}</p>
 </div>
 
 <div class="field">
