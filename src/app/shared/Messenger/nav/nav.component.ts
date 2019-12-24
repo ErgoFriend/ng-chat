@@ -27,7 +27,10 @@ export class NavComponent implements OnInit {
   }
 
   async ngOnInit() {
-    const cognitUser = await Auth.currentAuthenticatedUser();
+    let cognitUser;
+    try {
+      cognitUser = await Auth.currentAuthenticatedUser();
+    } catch {}
     if (cognitUser != null) {
       this.isLogin = true;
     } else {

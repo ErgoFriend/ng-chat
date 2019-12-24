@@ -13,12 +13,21 @@
   <div class="col-md-4">
     <div class="card card-user">
       <div class="image">
-        <img [src]="fileUrlBackground" alt="..." />
+        <img
+          [src]="fileUrlBackground"
+          (error)="(onImageLoadingError)"
+          alt="..."
+        />
       </div>
       <div class="card-body">
         <div class="author">
           <a href="#">
-            <img class="avatar border-gray" [src]="fileUrlProfile" alt="..." />
+            <img
+              class="avatar border-gray"
+              [src]="fileUrlProfile"
+              (error)="(onImageLoadingError)"
+              alt="..."
+            />
             <h5 class="title">{{ companyName }}</h5>
           </a>
           <p class="description">@{{ companyId }}</p>

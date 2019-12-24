@@ -26,6 +26,7 @@ import { showRoomDetailReducer } from "./store/session/session.reducer";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AdminLayoutCompanyComponent } from "./layouts/admin-company-layout/admin-company-layout.component";
+import { iFrameLayoutComponent } from "./layouts/iframe-layout/iframe-layout.component";
 
 import { SidebarCompanyComponent } from "./shared/Admin_company/sidebar/sidebar.component";
 import { RoomMainComponent } from "./layouts/room-layout/room-layout.component";
@@ -51,6 +52,11 @@ import { TableComponent } from "./companyAdmin/table/table.component";
 
 import { IndexComponent } from "./index/index/index.component";
 import { LandingPageComponent } from "./index/landingpage/landingpage.component";
+import { TermsComponent } from "./index/terms/terms.component";
+
+import { Terms2Component } from "./index/terms2/terms2.component";
+import { Terms3Component } from "./index/terms3/terms3.component";
+
 import { LandingPageApplicantComponent } from "./index/landingpageApplicant/landingpageApplicant.component";
 import { DetailComponent } from "./index/detail/detail.component";
 import { NavigationBarComponent } from "./shared/default/navigation-bar/navigation-bar.component";
@@ -90,6 +96,7 @@ import { UserModalComponent } from "./room/user-modal/user-modal.component";
     TableComponent,
     NavigationBarComponent,
     AuthLayoutComponent,
+    iFrameLayoutComponent,
     CreateCompanyUserComponent,
     LoginCompanyUserComponent,
     CreateApplicantUserComponent,
@@ -97,7 +104,10 @@ import { UserModalComponent } from "./room/user-modal/user-modal.component";
     ConfirmEmailComponent,
     UserModalComponent,
     LandingPageComponent,
-    LandingPageApplicantComponent
+    LandingPageApplicantComponent,
+    TermsComponent,
+    Terms2Component,
+    Terms3Component
   ],
   imports: [
     BrowserModule,

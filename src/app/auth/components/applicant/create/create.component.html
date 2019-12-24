@@ -22,7 +22,7 @@
       <i class="nc-icon nc-email-85" style="font-size: 12px;"></i>
     </span>
     <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
+      <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
     </span>
   </div>
   <!--<p class="help is-danger">正しいメールアドレスではありません。</p>-->
@@ -43,6 +43,24 @@
 </div>
 
 <div class="field">
+  <label class="label">電話番号</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input is-success" type="phone" [(ngModel)]="phone" />
+    <span class="icon is-small is-left">
+      <i class="nc-icon nc-chat-33" style="font-size: 12px;"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="nc-icon nc-check-2" style="font-size: 12px;"></i>
+    </span>
+  </div>
+  <!-- <p class="help is-success">ok</p> -->
+</div>
+
+<div class="field">
+  <div class="control">
+    <iframe width="100%" src="/iframe/terms" id="iframe" style="height: 500px;">
+    </iframe>
+  </div>
   <div class="control">
     <label class="checkbox">
       <input type="checkbox" [(ngModel)]="check" />

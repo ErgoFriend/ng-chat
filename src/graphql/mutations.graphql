@@ -37,6 +37,7 @@ mutation CreateCompany($input: CreateCompanyInput!) {
       createdAt
       updatedAt
     }
+    duplicateFlag
     articles {
       items {
         id
@@ -107,6 +108,7 @@ mutation UpdateCompany($input: UpdateCompanyInput!) {
       createdAt
       updatedAt
     }
+    duplicateFlag
     articles {
       items {
         id
@@ -177,6 +179,7 @@ mutation DeleteCompany($input: DeleteCompanyInput!) {
       createdAt
       updatedAt
     }
+    duplicateFlag
     articles {
       items {
         id
@@ -226,6 +229,7 @@ mutation CreateArticleTag($input: CreateArticleTagInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -273,6 +277,7 @@ mutation UpdateArticleTag($input: UpdateArticleTagInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -320,6 +325,7 @@ mutation DeleteArticleTag($input: DeleteArticleTagInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -433,6 +439,7 @@ mutation CreateArticle($input: CreateArticleInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -507,6 +514,7 @@ mutation UpdateArticle($input: UpdateArticleInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -581,6 +589,7 @@ mutation DeleteArticle($input: DeleteArticleInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -656,6 +665,7 @@ mutation CreateComment($input: CreateCommentInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -713,6 +723,7 @@ mutation UpdateComment($input: UpdateCommentInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -770,6 +781,7 @@ mutation DeleteComment($input: DeleteCommentInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -921,6 +933,7 @@ mutation CreateCompanyWorkType($input: CreateCompanyWorkTypeInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -971,6 +984,7 @@ mutation UpdateCompanyWorkType($input: UpdateCompanyWorkTypeInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1021,6 +1035,7 @@ mutation DeleteCompanyWorkType($input: DeleteCompanyWorkTypeInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1071,6 +1086,7 @@ mutation CreateCompanyStyleType($input: CreateCompanyStyleTypeInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1121,6 +1137,7 @@ mutation UpdateCompanyStyleType($input: UpdateCompanyStyleTypeInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1171,6 +1188,7 @@ mutation DeleteCompanyStyleType($input: DeleteCompanyStyleTypeInput!) {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1601,6 +1619,7 @@ mutation CreateArea($input: CreateAreaInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -1634,6 +1653,7 @@ mutation UpdateArea($input: UpdateAreaInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -1667,6 +1687,7 @@ mutation DeleteArea($input: DeleteAreaInput!) {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }

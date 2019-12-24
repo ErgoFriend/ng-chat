@@ -35,6 +35,8 @@ type Company @model @key(fields: ["id"]) @auth(rules: [{ allow: public }]) {
   area: Area @connection(name: "CompanyArea")
   owner: User! @connection
 
+  duplicateFlag: Boolean
+
   articles: [Article]! @connection(name: "CompanyArticle")
 
   workTypes: [CompanyWorkType]! @connection(name: "CompanyWorkTypes")

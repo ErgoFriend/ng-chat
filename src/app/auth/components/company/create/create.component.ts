@@ -15,12 +15,18 @@ export class CreateCompanyUserComponent implements OnInit {
   code: string;
   message: string;
   check: boolean;
+  phone: string;
+  name: string;
+  postnumber: string;
+  duplicatecheck: boolean;
+  
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.check = false;
     this.message = "";
+    this.duplicatecheck=false;
   }
 
   create() {
@@ -35,16 +41,18 @@ export class CreateCompanyUserComponent implements OnInit {
         attributes: {
           email: this.email, // optional
           // other custom attributes
-          "custom:user_role": "company"
+          "custom:user_role": "company",
+          "custom:company_name": this.name,
+          "custom:post_number": this.postnumber,
+          "custom:phone_number": this.phone,
+          "custom:duplicate_flag": this.duplicatecheck.toString()
         },
         validationData: [] //optional
       })
         .then(data => {
-          console.log("aaaaaaa");
           this.router.navigate(["/auth/confirm_email/company"]);
         })
         .catch(err => {
-          console.log("aaaaaaa");
           console.log(err);
           if (err.code == "UsernameExistsException") {
             if (this.message !== undefined) {

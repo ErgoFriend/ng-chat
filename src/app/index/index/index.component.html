@@ -47,13 +47,14 @@
             <div class="content">
               <h4>{{ articleList[i + 1].title }}</h4>
               <br />
-
-              <span
-                class="button is-link modal-button"
-                data-target="modal-image2"
-                style="background-color:#ee771c;font-size: 14px;"
-                >詳細を見る</span
-              >
+              <a (click)="redirect(articleList[i + 1].id)">
+                <span
+                  class="button is-link modal-button"
+                  data-target="modal-image2"
+                  style="background-color:#ee771c;font-size: 14px;"
+                  >詳細を見る</span
+                >
+              </a>
             </div>
           </div>
         </div>
@@ -74,13 +75,14 @@
             <div class="content">
               <h4>{{ articleList[i + 2].title }}</h4>
               <br />
-
-              <span
-                class="button is-link modal-button"
-                data-target="modal-image2"
-                style="background-color:#ee771c;font-size: 14px;"
-                >詳細を見る</span
-              >
+              <a (click)="redirect(articleList[i + 2].id)">
+                <span
+                  class="button is-link modal-button"
+                  data-target="modal-image2"
+                  style="background-color:#ee771c;font-size: 14px;"
+                  >詳細を見る</span
+                >
+              </a>
             </div>
           </div>
         </div>

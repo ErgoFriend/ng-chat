@@ -15,6 +15,7 @@ export class CreateApplicantUserComponent implements OnInit {
   message: string;
   email: string;
   code: string;
+  phone: string;
 
   constructor(private router: Router) {}
 
@@ -28,6 +29,7 @@ export class CreateApplicantUserComponent implements OnInit {
       this.message = "利用規約に同意してください。";
       this.router.navigate(["/auth/create"]);
     } else {
+      console.log("12345");
       Auth.signUp({
         username: this.username,
         password: this.password,
@@ -35,7 +37,11 @@ export class CreateApplicantUserComponent implements OnInit {
           email: this.email, // optional
           //phone_number: this.phone_number, // optional - E.164 number convention
           // other custom attributes
-          "custom:user_role": "applicant"
+          "custom:user_role": "applicant",
+          "custom:phone_number": this.phone,
+          "custom:company_name": "applicant",
+          "custom:post_number": "1234567",
+          "custom:duplicate_flag": "false"
         },
         validationData: [] //optional
       })
@@ -49,9 +55,9 @@ export class CreateApplicantUserComponent implements OnInit {
             }
           } else {
             if (this.message !== undefined) {
-              this.message = this.message + "そのユーザ名は既に使われいます。";
+              this.message = this.message + err.code;
             } else {
-              this.message = "そのユーザ名は既に使われいます。";
+              this.message = err.code;
             }
           }
         });

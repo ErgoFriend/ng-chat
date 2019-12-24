@@ -64,6 +64,7 @@ export class CompanyComponent implements OnInit {
     // await this.api.ListCompanys().then(data => {
     //   console.log(data);
     // });
+
     let companyData = await this.api.MyGetCompany(loginedUser.id);
     if (companyData !== null) {
       console.log(companyData);
@@ -87,106 +88,120 @@ export class CompanyComponent implements OnInit {
         })
         .catch(err => console.log(err));
     } else {
-      console.log(cognitUser.attributes.email);
       const now = Math.floor(new Date().getTime());
       companyData = await this.api.CreateCompany({
         id: loginedUser.id,
         companyOwnerId: loginedUser.id,
-        name: " ",
+        name: loginedUser.id,
         about: " ",
         email: cognitUser.attributes.email,
         createdAt: now,
         updatedAt: now
       });
 
+      this.companyName = companyData.name;
+      this.companyId = companyData.id;
+      this.companyAbout = companyData.about;
+      this.companyEmail = companyData.email;
+      this.workTypeList = companyData.workTypes.items;
+      this.styleTypeList = companyData.styleTypes.items;
+
       const response = await fetch("/assets/img/top/2.jpg");
-      console.log(response);
       const blob = await response.blob();
+
       Storage.put("company/background/" + loginedUser.id + ".png", blob, {
         contentType: "image/png"
-      });
-      Storage.put("company/profile/" + loginedUser.id + ".png", blob, {
+      })
+      .then(result => 
+        {
+        Storage.put("company/profile/" + loginedUser.id + ".png", blob, {
         contentType: "image/png"
-      });
-
-      Storage.get(this.fileNameBackground, { level: "public" })
+        })
+        .then(result => 
+          {
+        Storage.get(this.fileNameBackground, { level: "public" })
         .then(result => {
           console.log(result);
           this.fileUrlBackground = result;
         })
         .catch(err => console.log(err));
-      Storage.get(this.fileNameProfile, { level: "public" })
+        Storage.get(this.fileNameProfile, { level: "public" })
         .then(result => {
           console.log(result);
-          this.fileUrlProfile = result;
+          this.fileUrlProfile = result;  
         })
         .catch(err => console.log(err));
+      }
+      );}
+      )       
     }
 
-    //workTypeのロジック
-    await this.api.ListWorkTypes().then(data => {
-      var tmp = Array();
-      var tmpOnlyId = Array();
-      this.workTypeMasterList = data.items;
-      //idだけの配列を準備
-      console.log(this.workTypeList);
-      for (let ii = 0; ii < this.workTypeList.length; ii++) {
-        console.log(this.workTypeList[ii]);
-        tmpOnlyId.push(this.workTypeList[ii].workType.id);
-      }
-      //存在性のチェック
-      for (let i = 0; i < data.items.length; i++) {
-        if (tmpOnlyId.indexOf(data.items[i].id) == -1) {
-          tmp.push({
-            id: data.items[i].id,
-            content: data.items[i].content,
-            flag: false
-          });
-        } else {
-          tmp.push({
-            id: data.items[i].id,
-            content: data.items[i].content,
-            flag: true
-          });
-        }
-      }
-      console.log(tmp);
-      this.workTypeListForView = tmp;
-    });
 
-    //styleTypeのロジック
-    await this.api.ListStyleTypes().then(data => {
-      var tmp = Array();
-      var tmpOnlyId = Array();
-      this.styleTypeMasterList = data.items;
-      //idだけの配列を準備
-      for (let ii = 0; ii < this.styleTypeList.length; ii++) {
-        console.log(this.styleTypeList[ii]);
-        tmpOnlyId.push(this.styleTypeList[ii].styleType.id);
-      }
-      //存在性のチェック
-      for (let i = 0; i < data.items.length; i++) {
-        if (tmpOnlyId.indexOf(data.items[i].id) == -1) {
-          tmp.push({
-            id: data.items[i].id,
-            content: data.items[i].content,
-            flag: false
-          });
-        } else {
-          tmp.push({
-            id: data.items[i].id,
-            content: data.items[i].content,
-            flag: true
-          });
-        }
-      }
-      console.log(tmp);
-      this.styleTypeListForView = tmp;
-    });
+            //workTypeのロジック
+        await this.api.ListWorkTypes().then(data => {
+          var tmp = Array();
+          var tmpOnlyId = Array();
+          this.workTypeMasterList = data.items;
+          //idだけの配列を準備
+          console.log(this.workTypeList);
+          if(this.workTypeList!=undefined){
+            for (let ii = 0; ii < this.workTypeList.length; ii++) {
+              console.log(this.workTypeList[ii]);
+              tmpOnlyId.push(this.workTypeList[ii].workType.id);
+            }
+          }
+          //存在性のチェック
+          for (let i = 0; i < data.items.length; i++) {
+            if (tmpOnlyId.indexOf(data.items[i].id) == -1) {
+              tmp.push({
+                id: data.items[i].id,
+                content: data.items[i].content,
+                flag: false
+              });
+            } else {
+              tmp.push({
+                id: data.items[i].id,
+                content: data.items[i].content,
+                flag: true
+              });
+            }
+          }
+          console.log(tmp);
+          this.workTypeListForView = tmp;
+        });
 
-    //このcompanyとリレーションがあるかチェック
+        //styleTypeのロジック
+        await this.api.ListStyleTypes().then(data => {
+          var tmp = Array();
+          var tmpOnlyId = Array();
+          this.styleTypeMasterList = data.items;
+          //idだけの配列を準備
+          if(this.workTypeList!=undefined){
+            for (let ii = 0; ii < this.styleTypeList.length; ii++) {
+              console.log(this.styleTypeList[ii]);
+              tmpOnlyId.push(this.styleTypeList[ii].styleType.id);
+            }
+          }
+          //存在性のチェック
+          for (let i = 0; i < data.items.length; i++) {
+            if (tmpOnlyId.indexOf(data.items[i].id) == -1) {
+              tmp.push({
+                id: data.items[i].id,
+                content: data.items[i].content,
+                flag: false
+              });
+            } else {
+              tmp.push({
+                id: data.items[i].id,
+                content: data.items[i].content,
+                flag: true
+              });
+            }
+          }
+          console.log(tmp);
+          this.styleTypeListForView = tmp;      
+      }); 
 
-    //画面に返す
   }
 
   onFileChangedBackground(event) {

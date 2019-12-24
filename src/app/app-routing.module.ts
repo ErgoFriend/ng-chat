@@ -22,6 +22,10 @@ import { IndexComponent } from "./index/index/index.component";
 import { DetailComponent } from "./index/detail/detail.component";
 import { LandingPageComponent } from "./index/landingpage/landingpage.component";
 import { LandingPageApplicantComponent } from "./index/landingpageApplicant/landingpageApplicant.component";
+import { TermsComponent } from "./index/terms/terms.component";
+
+import { Terms2Component } from "./index/terms2/terms2.component";
+import { Terms3Component } from "./index/terms3/terms3.component";
 
 // Auth
 import { AuthLayoutComponent } from "./auth/components/layout/layout.component";
@@ -30,6 +34,8 @@ import { LoginApplicantUserComponent } from "./auth/components/applicant/login/l
 import { CreateCompanyUserComponent } from "./auth/components/company/create/create.component";
 import { LoginCompanyUserComponent } from "./auth/components/company/login/login.component";
 import { ConfirmEmailComponent } from "./auth/confirm-email/confirm-email.component";
+
+import { iFrameLayoutComponent } from "./layouts/iframe-layout/iframe-layout.component";
 
 const routes: Routes = [
   //  { path: "", redirectTo: "home", pathMatch: "full", canActivate: [AuthGuard] },
@@ -157,6 +163,36 @@ const routes: Routes = [
       {
         path: "landingpageApplicant",
         component: LandingPageApplicantComponent
+      },
+      {
+        path: "terms",
+        component: TermsComponent
+      },
+      {
+        path: "terms2",
+        component: Terms2Component
+      },
+      {
+        path: "terms3",
+        component: Terms3Component
+      }
+    ]
+  },
+  {
+    path: "iframe",
+    component: iFrameLayoutComponent,
+    children: [
+      {
+        path: "terms",
+        component: TermsComponent
+      },
+      {
+        path: "terms2",
+        component: Terms2Component
+      },
+      {
+        path: "terms3",
+        component: Terms3Component
       }
     ]
   }

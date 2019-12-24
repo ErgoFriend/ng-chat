@@ -12,6 +12,7 @@ export type CreateCompanyInput = {
   logo?: string | null;
   backgroundImg?: string | null;
   about?: string | null;
+  duplicateFlag?: boolean | null;
   createdAt: number;
   updatedAt: number;
   companyAreaId?: string | null;
@@ -30,6 +31,7 @@ export type UpdateCompanyInput = {
   logo?: string | null;
   backgroundImg?: string | null;
   about?: string | null;
+  duplicateFlag?: boolean | null;
   createdAt?: number | null;
   updatedAt?: number | null;
   companyAreaId?: string | null;
@@ -469,6 +471,7 @@ export type ModelCompanyFilterInput = {
   logo?: ModelStringFilterInput | null;
   backgroundImg?: ModelStringFilterInput | null;
   about?: ModelStringFilterInput | null;
+  duplicateFlag?: ModelBooleanFilterInput | null;
   createdAt?: ModelIntFilterInput | null;
   updatedAt?: ModelIntFilterInput | null;
   and?: Array<ModelCompanyFilterInput | null> | null;
@@ -500,6 +503,11 @@ export type ModelStringFilterInput = {
   notContains?: string | null;
   between?: Array<string | null> | null;
   beginsWith?: string | null;
+};
+
+export type ModelBooleanFilterInput = {
+  ne?: boolean | null;
+  eq?: boolean | null;
 };
 
 export type ModelIntFilterInput = {
@@ -777,6 +785,7 @@ export type CreateCompanyMutation = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -860,6 +869,7 @@ export type UpdateCompanyMutation = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -943,6 +953,7 @@ export type DeleteCompanyMutation = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -1001,6 +1012,7 @@ export type CreateArticleTagMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -1055,6 +1067,7 @@ export type UpdateArticleTagMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -1109,6 +1122,7 @@ export type DeleteArticleTagMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -1237,6 +1251,7 @@ export type CreateArticleMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -1324,6 +1339,7 @@ export type UpdateArticleMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -1411,6 +1427,7 @@ export type DeleteArticleMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -1501,6 +1518,7 @@ export type CreateCommentMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -1567,6 +1585,7 @@ export type UpdateCommentMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -1633,6 +1652,7 @@ export type DeleteCommentMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -1803,6 +1823,7 @@ export type CreateCompanyWorkTypeMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -1861,6 +1882,7 @@ export type UpdateCompanyWorkTypeMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -1919,6 +1941,7 @@ export type DeleteCompanyWorkTypeMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -1977,6 +2000,7 @@ export type CreateCompanyStyleTypeMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -2035,6 +2059,7 @@ export type UpdateCompanyStyleTypeMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -2093,6 +2118,7 @@ export type DeleteCompanyStyleTypeMutation = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -2584,6 +2610,7 @@ export type CreateAreaMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -2621,6 +2648,7 @@ export type UpdateAreaMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -2658,6 +2686,7 @@ export type DeleteAreaMutation = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -3900,6 +3929,7 @@ export type GetCompanyQuery = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -3965,6 +3995,7 @@ export type ListCompanysQuery = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -4003,6 +4034,7 @@ export type GetArticleTagQuery = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -4139,6 +4171,7 @@ export type GetArticleQuery = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -4205,6 +4238,7 @@ export type ListArticlesQuery = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -4270,6 +4304,7 @@ export type GetCommentQuery = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -4432,6 +4467,7 @@ export type GetCompanyWorkTypeQuery = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -4471,6 +4507,7 @@ export type ListCompanyWorkTypesQuery = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -4519,6 +4556,7 @@ export type GetCompanyStyleTypeQuery = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -4558,6 +4596,7 @@ export type ListCompanyStyleTypesQuery = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -4837,6 +4876,7 @@ export type GetAreaQuery = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -5729,6 +5769,7 @@ export type OnCreateCompanySubscription = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -5812,6 +5853,7 @@ export type OnUpdateCompanySubscription = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -5895,6 +5937,7 @@ export type OnDeleteCompanySubscription = {
     createdAt: number;
     updatedAt: number;
   };
+  duplicateFlag: boolean | null;
   articles: {
     __typename: "ModelArticleConnection";
     items: Array<{
@@ -5953,6 +5996,7 @@ export type OnCreateArticleTagSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -6007,6 +6051,7 @@ export type OnUpdateArticleTagSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -6061,6 +6106,7 @@ export type OnDeleteArticleTagSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -6189,6 +6235,7 @@ export type OnCreateArticleSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6276,6 +6323,7 @@ export type OnUpdateArticleSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6363,6 +6411,7 @@ export type OnDeleteArticleSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6453,6 +6502,7 @@ export type OnCreateCommentSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -6519,6 +6569,7 @@ export type OnUpdateCommentSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -6585,6 +6636,7 @@ export type OnDeleteCommentSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     };
@@ -6755,6 +6807,7 @@ export type OnCreateCompanyWorkTypeSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6813,6 +6866,7 @@ export type OnUpdateCompanyWorkTypeSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6871,6 +6925,7 @@ export type OnDeleteCompanyWorkTypeSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6929,6 +6984,7 @@ export type OnCreateCompanyStyleTypeSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -6987,6 +7043,7 @@ export type OnUpdateCompanyStyleTypeSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -7045,6 +7102,7 @@ export type OnDeleteCompanyStyleTypeSubscription = {
       createdAt: number;
       updatedAt: number;
     };
+    duplicateFlag: boolean | null;
     articles: {
       __typename: "ModelArticleConnection";
       nextToken: string | null;
@@ -7536,6 +7594,7 @@ export type OnCreateAreaSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -7573,6 +7632,7 @@ export type OnUpdateAreaSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -7610,6 +7670,7 @@ export type OnDeleteAreaSubscription = {
       logo: string | null;
       backgroundImg: string | null;
       about: string | null;
+      duplicateFlag: boolean | null;
       createdAt: number;
       updatedAt: number;
     } | null> | null;
@@ -8233,6 +8294,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -8328,6 +8390,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -8423,6 +8486,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -8493,6 +8557,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -8559,6 +8624,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -8625,6 +8691,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -8801,6 +8868,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -8900,6 +8968,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -8999,6 +9068,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -9101,6 +9171,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -9179,6 +9250,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -9257,6 +9329,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -9511,6 +9584,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -9581,6 +9655,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -9651,6 +9726,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -9721,6 +9797,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -9791,6 +9868,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -9861,6 +9939,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -10506,6 +10585,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -10553,6 +10633,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -10600,6 +10681,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -12056,6 +12138,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -12137,6 +12220,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -12198,6 +12282,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -12412,6 +12497,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -12494,6 +12580,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -12582,6 +12669,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -12861,6 +12949,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -12916,6 +13005,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -12987,6 +13077,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -13042,6 +13133,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -13500,6 +13592,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -14676,6 +14769,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -14767,6 +14861,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -14858,6 +14953,7 @@ export class APIService {
             createdAt
             updatedAt
           }
+          duplicateFlag
           articles {
             __typename
             items {
@@ -14924,6 +15020,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -14986,6 +15083,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -15048,6 +15146,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -15208,6 +15307,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -15303,6 +15403,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -15398,6 +15499,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -15496,6 +15598,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -15570,6 +15673,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -15644,6 +15748,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -15870,6 +15975,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -15936,6 +16042,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -16002,6 +16109,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -16068,6 +16176,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -16134,6 +16243,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -16200,6 +16310,7 @@ export class APIService {
               createdAt
               updatedAt
             }
+            duplicateFlag
             articles {
               __typename
               nextToken
@@ -16787,6 +16898,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -16830,6 +16942,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }
@@ -16873,6 +16986,7 @@ export class APIService {
               logo
               backgroundImg
               about
+              duplicateFlag
               createdAt
               updatedAt
             }

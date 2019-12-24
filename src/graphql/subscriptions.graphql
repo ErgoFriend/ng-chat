@@ -215,6 +215,7 @@ subscription OnCreateCompany {
       createdAt
       updatedAt
     }
+    duplicateFlag
     articles {
       items {
         id
@@ -285,6 +286,7 @@ subscription OnUpdateCompany {
       createdAt
       updatedAt
     }
+    duplicateFlag
     articles {
       items {
         id
@@ -355,6 +357,7 @@ subscription OnDeleteCompany {
       createdAt
       updatedAt
     }
+    duplicateFlag
     articles {
       items {
         id
@@ -404,6 +407,7 @@ subscription OnCreateArticleTag {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -451,6 +455,7 @@ subscription OnUpdateArticleTag {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -498,6 +503,7 @@ subscription OnDeleteArticleTag {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -611,6 +617,7 @@ subscription OnCreateArticle {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -685,6 +692,7 @@ subscription OnUpdateArticle {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -759,6 +767,7 @@ subscription OnDeleteArticle {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -834,6 +843,7 @@ subscription OnCreateComment {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -891,6 +901,7 @@ subscription OnUpdateComment {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -948,6 +959,7 @@ subscription OnDeleteComment {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -1099,6 +1111,7 @@ subscription OnCreateCompanyWorkType {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1149,6 +1162,7 @@ subscription OnUpdateCompanyWorkType {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1199,6 +1213,7 @@ subscription OnDeleteCompanyWorkType {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1249,6 +1264,7 @@ subscription OnCreateCompanyStyleType {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1299,6 +1315,7 @@ subscription OnUpdateCompanyStyleType {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1349,6 +1366,7 @@ subscription OnDeleteCompanyStyleType {
         createdAt
         updatedAt
       }
+      duplicateFlag
       articles {
         nextToken
       }
@@ -1779,6 +1797,7 @@ subscription OnCreateArea {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -1812,6 +1831,7 @@ subscription OnUpdateArea {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }
@@ -1845,6 +1865,7 @@ subscription OnDeleteArea {
         logo
         backgroundImg
         about
+        duplicateFlag
         createdAt
         updatedAt
       }

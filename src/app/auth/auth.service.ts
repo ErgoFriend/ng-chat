@@ -33,10 +33,10 @@ export class AuthService {
 
     Hub.listen("auth", data => {
       console.log("data.payload.event: ", data.payload.event);
+      console.log("data.payload.data: ", data.payload.data);
       var Applicantflag = false;
-
-      var role = data.payload.data.attributes["custom:user_role"];
-
+      var role;
+      role = data.payload.data.attributes["custom:user_role"];
       console.log(role);
       if (role == "applicant") {
         Applicantflag = true;
@@ -115,16 +115,20 @@ export class AuthService {
 
   /** ログイン状態の取得 */
   public isAuthenticated(): Observable<boolean> {
-    return fromPromise(Auth.currentAuthenticatedUser()).pipe(
-      map(result => {
-        this.loggedIn.next(true);
-        return true;
-      }),
-      catchError(error => {
-        this.loggedIn.next(false);
-        return of(false);
-      })
-    );
+    if (Auth.currentAuthenticatedUser() != null) {
+      return fromPromise(Auth.currentAuthenticatedUser()).pipe(
+        map(result => {
+          this.loggedIn.next(true);
+          return true;
+        }),
+        catchError(error => {
+          this.loggedIn.next(false);
+          return of(false);
+        })
+      );
+    } else {
+      return of(false);
+    }
   }
 
   /** ログアウト */

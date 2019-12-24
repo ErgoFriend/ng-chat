@@ -35,14 +35,22 @@ export class LandingPageComponent implements OnInit {
   messageCompany: string;
   checkCompany: boolean;
 
+  email: string;
+  code: string;
+  phone: string;
+  duplicatecheck:boolean;
+  name: string;
+  postnumber: string;
+  
+
   constructor(private router: Router) {}
-  async ngOnInit() {}
+  async ngOnInit() {this.duplicatecheck=false;}
 
   redirect(id) {
     location.href = "/detail?id=" + id;
   }
 
-  createApplicant() {
+  /* createApplicant() {
     this.messageApplicant = "";
     if (this.checkApplicant == false) {
       this.messageApplicant = "利用規約に同意してください。";
@@ -78,7 +86,7 @@ export class LandingPageComponent implements OnInit {
           }
         });
     }
-  }
+  } */
 
   createCompany() {
     this.messageCompany = "";
@@ -92,7 +100,11 @@ export class LandingPageComponent implements OnInit {
         attributes: {
           email: this.emailCompany, // optional
           // other custom attributes
-          "custom:user_role": "company"
+          "custom:user_role": "company",
+           "custom:company_name": this.name,
+          "custom:post_number": this.postnumber,
+          "custom:phone_number": this.phone,
+          "custom:duplicate_flag": this.duplicatecheck.toString()
         },
         validationData: [] //optional
       })

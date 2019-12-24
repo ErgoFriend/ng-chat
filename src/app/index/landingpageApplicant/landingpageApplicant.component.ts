@@ -35,6 +35,14 @@ export class LandingPageApplicantComponent implements OnInit {
   messageCompany: string;
   checkCompany: boolean;
 
+  email: string;
+  name: string;
+  postnumber: string;
+  code: string;
+  phone: string;
+  duplicatecheck:boolean;
+
+
   constructor(private router: Router) {}
   async ngOnInit() {}
 
@@ -55,7 +63,11 @@ export class LandingPageApplicantComponent implements OnInit {
           email: this.emailApplicant, // optional
           //phone_number: this.phone_number, // optional - E.164 number convention
           // other custom attributes
-          "custom:user_role": "applicant"
+          "custom:user_role": "applicant",
+           "custom:phone_number": this.phone,
+          "custom:company_name": "applicant",
+          "custom:post_number": "1234567",
+          "custom:duplicate_flag": "false"
         },
         validationData: [] //optional
       })
@@ -80,7 +92,7 @@ export class LandingPageApplicantComponent implements OnInit {
     }
   }
 
-  createCompany() {
+ /*  createCompany() {
     this.messageCompany = "";
     if (this.checkCompany == false) {
       this.messageCompany = "利用規約に同意してください。";
@@ -118,5 +130,5 @@ export class LandingPageApplicantComponent implements OnInit {
           }
         });
     }
-  }
+  } */
 }

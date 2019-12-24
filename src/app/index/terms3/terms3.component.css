@@ -1,0 +1,41 @@
+.container{
+  width:80%;
+  margin:15px auto;
+  margin-top:100px;
+  margin-bottom:100px;
+  height:unset;
+}
+p{
+  height:unset;
+}
+h5{
+  height:unset;
+}
+.terms h1{
+  text-align: center;
+  margin-bottom:15px;
+}
+.terms p{
+  text-align: center;
+  color:black;
+}
+
+.terms_text{
+  display:block;
+  color:black;
+  font-size:15px;
+  margin-top:25px;
+  margin-bottom:25px;
+}
+
+
+
+@media(max-width:648px){
+  .container{
+      width:96%;
+  }
+  p{
+      height:unset;
+  }
+}
+

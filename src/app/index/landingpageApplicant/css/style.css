@@ -139,7 +139,7 @@ h5,
 }
 
 .site-section {
-  padding: 2.5em 0;
+  padding: 2.5em;
 }
 @media (min-width: 768px) {
   .site-section {
@@ -796,7 +796,16 @@ h5,
 }
 .site-blocks-cover.overlay {
   position: relative;
-  background-image: url(../../../../assets/img/backimage44.jpg);
+  background-image: url(../../../../assets/img/people.jpg);
+  /*background-image: url(../../../../assets/img/backimage44.jpg);*/
+
+  height: 1200px !important;
+}
+
+@media (min-width: 768px) {
+  .site-blocks-cover.overlay {
+    height: 450px;
+  }
 }
 .site-blocks-cover.overlay:before {
   position: absolute;
@@ -830,7 +839,7 @@ h5,
 }
 @media (max-width: 991.98px) {
   .site-blocks-cover h1 {
-    font-size: 2rem;
+    font-size: 27px;
   }
 }
 .site-blocks-cover p {
@@ -1875,7 +1884,7 @@ h5,
 }
 @media (max-width: 991.98px) {
   .section-title {
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 0px;
   }
 }

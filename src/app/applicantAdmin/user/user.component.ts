@@ -62,6 +62,7 @@ export class UserComponent implements OnInit {
   constructor(private api: MyAPIService) {}
 
   async ngOnInit() {
+    console.log("aaaaaaa");
     const cognitUser = await Auth.currentAuthenticatedUser();
     console.log(cognitUser);
     console.log(cognitUser.attributes.email);

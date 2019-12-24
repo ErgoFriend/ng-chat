@@ -1,10 +1,10 @@
-import {Component, OnInit} from "@angular/core";
-import {APIService} from "./API.service";
-import {RoomService} from "./store/room/room.service";
-import {AuthService} from "./auth/auth.service";
-import {tap} from "rxjs/operators";
-import {Router, ActivatedRoute} from "@angular/router";
-import Amplify, {Auth, Hub} from "aws-amplify";
+import { Component, OnInit } from "@angular/core";
+import { APIService } from "./API.service";
+import { RoomService } from "./store/room/room.service";
+import { AuthService } from "./auth/auth.service";
+import { tap } from "rxjs/operators";
+import { Router, ActivatedRoute } from "@angular/router";
+import Amplify, { Auth, Hub } from "aws-amplify";
 
 @Component({
   selector: "app-root",
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       console.log("currentAuthenticatedUser:", user);
       // 参加中のチャットルームを取得
       this.api
-        .ListRoomUsers(null, {username: {eq: user.username}})
+        .ListRoomUsers(null, { username: { eq: user.username } })
         .then(roomsGql => {
           console.log("参加中のチャットルーム:", roomsGql.items);
           roomsGql.items.forEach(item => this.roomService.addRoom(item.room));
@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
-    console.log("app component");
     // console.log(rooms);
     // console.log(this.router.url);
     // if (this.router.url === "/") {

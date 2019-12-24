@@ -143,6 +143,11 @@ export class EditComponent implements OnInit {
         .then(data => {
           var tmp = Array();
           lastId = data.items[0].id;
+          for (let i = 0; i < data.items.length; i++) {
+            if (parseInt(lastId, 10) < parseInt(data.items[i].id, 10)) {
+              lastId = data.items[i].id;
+            }
+          }
           const article: CreateArticleInput = {
             id: (parseInt(lastId, 10) + 1).toString(10),
             title: this.title,
@@ -154,6 +159,7 @@ export class EditComponent implements OnInit {
             createdAt: now,
             updatedAt: now
           };
+          console.log(article);
           const sent = this.api.CreateArticle(article);
         });
     } else {
