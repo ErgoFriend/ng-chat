@@ -1,18 +1,18 @@
-import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 
-import {ListRoomsQuery, CreateRoomInput} from "../API.service";
-import {MyAPIService} from "../API.my";
+import { ListRoomsQuery, CreateRoomInput } from "../API.service";
+import { MyAPIService } from "../API.my";
 
-import Amplify, {Auth, Hub} from "aws-amplify";
+import Amplify, { Auth, Hub } from "aws-amplify";
 
-import {RoomService} from "../store/room/room.service";
+import { RoomService } from "../store/room/room.service";
 
-import {Store, select} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {showRoomDetail} from "../store/session/session.action";
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { showRoomDetail } from "../store/session/session.action";
 
-import {ulid} from "ulid";
+import { ulid } from "ulid";
 
 @Component({
   selector: "app-room-list",
@@ -32,7 +32,7 @@ export class RoomListComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public roomService: RoomService,
-    private store: Store<{showRoomDetail: boolean}>
+    private store: Store<{ showRoomDetail: boolean }>
   ) {
     this.roomid = "";
     this.showRoomDetail$ = store.pipe(select("showRoomDetail"));
@@ -86,18 +86,16 @@ export class RoomListComponent implements OnInit {
       updatedAt: now
     };
     this.roomid = "";
-    console.log("this.newRoom:", this.newRoom);
-    this.api.CreateRoom(this.newRoom).then(resultRoom => {
-      if (resultRoom.id !== null) {
-        this.api.CreateRoomUser({
-          id: ulid(),
-          username: loginedUser.username,
-          roomUserRoomId: resultRoom.id,
-          roomUserUserId: loginedUser.id,
-          createdAt: now,
-          updatedAt: now
-        });
-      }
+
+    const newRoom = await this.api.CreateRoom(this.newRoom);
+
+    this.api.CreateRoomUser({
+      id: ulid(),
+      username: loginedUser.username,
+      roomUserRoomId: newRoom.id,
+      roomUserUserId: loginedUser.id,
+      createdAt: now,
+      updatedAt: now
     });
   }
 
